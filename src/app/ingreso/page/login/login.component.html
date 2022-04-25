@@ -1,0 +1,32 @@
+<body>
+	<section class="login">
+		<div class="login_box">
+			<div class="left">
+				
+				<div class="contact">
+					<div class="letrageneral">
+						<h3 class="letrageneral">SIGN IN</h3>
+						<input type="text" class="letrageneral" [(ngModel)]="correo" placeholder="USERNAME">
+						<input type="text" class="letrageneral" [(ngModel)] = "contrasenia"placeholder="PASSWORD">
+						<div class="marginabajo">
+							<select class="disenioSelectYButton" aria-label="Default select example">
+								<option selected>ACCESO RAPIDO</option>
+								<option value="1">Especialista</option>
+								<option value="2">Paciente</option>
+							  </select>
+							<button class="btn btn-warning disenioSelectYButton letrageneral" [routerLink]="['/ingreso/registrar']">¡ REGISTRATE !</button>
+						</div>
+						<button class="botonPrincipal" (click) = "ingresar()">INGRESAR</button>
+                      </div>
+					
+				</div>
+			</div>
+			<div class="right">
+				<div class="right-text">
+					<h2>CLINICA</h2>
+					<h5>CLINICA MEDICA</h5>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>

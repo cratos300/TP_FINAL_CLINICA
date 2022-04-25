@@ -1,0 +1,51 @@
+<div class="tricito">
+    <body>
+        <div  id="advanced-search-form">
+            <div class="divespecial">
+                <div class="sinuso">
+                    
+                </div>
+                <h1>Registro Especialista</h1>
+                <img (click) = "atras()" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXeWHsD5JKxLV3V3Y1tUmGmCBt0Tl_IDersQ&usqp=CAU" alt="">
+            </div>
+            <form [formGroup] = "formGroup" (ngSubmit) = "aceptar()">
+                <div class="form-group fet">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" formControlName= "nombre">
+                    <small class="invalid" *ngIf = "formGroup.get('nombre')?.hasError('required') && formGroup.get('nombre')?.touched">El nombre es requerido</small>
+                </div>
+                <div class="form-group fet">
+                    <label for="Apellido">Apellido</label>
+                    <input type="text" class="form-control" placeholder="Apellido" id="Apellido" formControlName= "apellido">
+                    <small class="invalid" *ngIf = "formGroup.get('apellido')?.hasError('required') && formGroup.get('apellido')?.touched">El apellido es requerido</small>
+                </div>
+                <div class="form-group fet">
+                    <label for="edad">Edad</label>
+                    <input type="number" class="form-control" placeholder="edad" id="edad" formControlName= "edad">
+                    <small class="invalid" *ngIf = "formGroup.get('edad')?.hasError('required') && formGroup.get('edad')?.touched">La edad es requerida</small>
+                    <small class="invalid" *ngIf = "formGroup.get('edad')?.hasError('min') || formGroup.get('edad')?.hasError('max') && formGroup.get('edad')?.touched">La edad debe  ser entre.. 18 y 90 años</small>
+                </div>
+                <div class="form-group fet">
+                    <label for="dni">DNI</label>
+                    <input type="number" class="form-control" placeholder="dni" id="dni" formControlName= "dni">
+                    <small class="invalid" *ngIf = "formGroup.get('dni')?.hasError('required') && formGroup.get('dni')?.touched">El DNI es requerido</small>
+                </div> 
+                <div class="form-group fet">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" placeholder="password" id="password" formControlName= "password">
+                    <small class="invalid" *ngIf = "formGroup.get('password')?.hasError('required') && formGroup.get('password')?.touched">La contraseña es requerido</small>
+                </div>
+                <div class="form-group fet">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" placeholder="email" id="email" formControlName= "email">
+                    <small class="invalid" *ngIf = "formGroup.get('email')?.hasError('required') && formGroup.get('email')?.touched">El email es requerido</small>
+                    <small class="invalid" *ngIf = "formGroup.get('email')?.hasError('pattern') && formGroup.get('email')?.touched">Formato inválido.</small>
+                </div>
+                <div class="clearfix"></div>
+                <button type="submit" class="btn btn-info btn-lg btn-responsive botonPrincipal" [disabled] = "formGroup.invalid" id="search" (click) = "aceptar()">REGISTRAR</button>
+            </form>
+        </div>
+    </body>
+    </div> 
+    
+    

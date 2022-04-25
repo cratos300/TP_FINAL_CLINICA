@@ -1,0 +1,12 @@
+
+
+<div class="tricito" *ngIf="paciente == false && especialista == false">
+    <button class="btn btn-primary" (click) = "aceptar('paciente')">ALTA PACIENTE</button>
+    <button class="btn btn-primary" (click) = "aceptar('especialista')" >ALTA ESPECIALISTA</button>
+</div>
+<app-alta-paciente (volver) = "cambiar($event)" *ngIf="paciente"></app-alta-paciente>
+<app-alta-especialista (volver) = "cambiar($event)" *ngIf="especialista"></app-alta-especialista>
+
+    
+    
+    
