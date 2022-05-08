@@ -13,8 +13,9 @@ import Swal from 'sweetalert2'
   styleUrls: ['./alta-paciente.component.css']
 })
 export class AltaPacienteComponent implements OnInit {
-
-  unpaciente:Paciente
+  eventoGeneral:any;
+  unpaciente:Paciente;
+  imagenes:any[] = [];
   public formGroup!: FormGroup;
   encontrado:boolean = false;
   @Output() volver: EventEmitter<any>= new EventEmitter<any>();
@@ -33,6 +34,9 @@ export class AltaPacienteComponent implements OnInit {
       'email': ['',[Validators.required,Validators.pattern(/\w+@\w+\.+[a-z]/)]],
       'dni': ['',[Validators.required]],
       'password': ['',[Validators.required]],
+      'inputFile': ['',[Validators.required]],
+      'inputFile2': ['',[Validators.required]],
+
     });
   }
   aceptar()
@@ -95,6 +99,10 @@ export class AltaPacienteComponent implements OnInit {
                  })
           })
 
+}
+cargarImagen(event:any)
+{
+  this.eventoGeneral = event;
 }
 
 }

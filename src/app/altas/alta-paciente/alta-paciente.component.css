@@ -146,4 +146,43 @@ img
     width:850px;
     height: 850px;
 }
+#inputFile
+{
+    display: none;
+}
+#inputFile2
+{
+    display: none;
+}
+.labelInputFile
+{
+    position: absolute;
+    width: 9.5rem;
+    height: 8rem;
+    background-color: white;
+    border-radius: 100%;
+    padding: 1rem;
+    box-shadow: 0 0 10px -1px gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+
+}
+.labelInputFile img
+{
+    width: 4rem;
+    height: 4rem;
+}
+.labelInputFile:active
+{
+    transform: scale(0.9);
+}
+.e 
+{
+    display: flex;
+    justify-content: center;
+}
+
 
