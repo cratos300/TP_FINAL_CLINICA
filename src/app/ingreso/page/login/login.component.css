@@ -1,166 +1,68 @@
-img{
-	width: 100%;
-}
-.login {
-    height: 100vh;
-    width: 100%;
-    background-image: url("../../../../assets/clinica.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-.login_box {
-    background: none;
-    width: 1050px;
-    height: 550px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 10px;
-    box-shadow: 1px 4px 22px -8px #0004;
-    display: flex;
-    overflow: hidden;
-}
-.login_box .left{
-  width: 41%;
-  height: 100%;
-  padding: 25px 25px;
+.gradient-custom-2 {
+  /* fallback for old browsers */
   
-}
-.login_box .right{
-  width: 59%;
-  height: 100%  
-}
-.left .top_link a {
-    color: #452A5A;
-    font-weight: 400;
-}
-.left .top_link{
-  height: 20px
-}
-.left .contact{
-	display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-    height: 100%;
-    width: 73%;
-    margin: auto;
-}
-.left h3{
-  text-align: center;
-  margin-bottom: 40px;
-}
-.left input {
-    border: none;
-    width: 80%;
-    margin: 15px 0px;
-    border-bottom: 1px solid #4f30677d;
-    padding: 7px 9px;
-    width: 100%;
-    overflow: hidden;
-    background: transparent;
-    font-weight: 600;
-    font-size: 14px;
-}
-.left{
-	background: linear-gradient(-45deg, #dcd7e0, #fff);
-  opacity: 0.90;
-  filter: alpha(opacity=50);
-  zoom: 1;
-
-}
-.submit {
-    border: none;
-    padding: 15px 70px;
-    border-radius: 8px;
-    display: block;
-    margin: auto;
-    margin-top: 120px;
-    background: #583672;
-    color: #fff;
-    font-weight: bold;
-    -webkit-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
-    -moz-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
-    box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
-}
-
-
-
-.right {
-	background: url("https://st4.depositphotos.com/3662505/20756/i/600/depositphotos_207561022-stock-photo-stethoscope-and-pills-on-table.jpg");
-	color: #fff;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-   
-}
-
-.right .right-text{
-  height: 100%;
-  position: relative;
-  transform: translate(0%, 45%);
-}
-.right-text h2{
-  display: block;
-  width: 100%;
-  text-align: center;
-  font-size: 50px;
-  font-weight: 500;
-}
-.right-text h5{
-  display: block;
-  width: 100%;
-  text-align: center;
-  font-size: 19px;
-  font-weight: 400;
-}
-
-.right .right-inductor{
-  position: absolute;
-  width: 70px;
-  height: 7px;
-  background: #fff0;
-  left: 50%;
-  bottom: 70px;
-  transform: translate(-50%, 0%);
-}
-.top_link img {
-    width: 28px;
-    padding-right: 7px;
-    margin-top: -3px;
-}
-.botonPrincipal
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  }
+  .letrageneral
 {
-  border: none;
-  padding: 15px 70px;
-  border-radius: 8px;
-  display: block;
-  margin: auto;
-  background: #583672;
-  color: #fff;
-  font-weight: bold;
-  box-shadow: 0px 9px 15px -11px rgb(88 54 114);
+  font-size: 16px;
 }
-.marginabajo
+  .marginabajo
 {
-  margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.letrageneral
-{
-  font-size: 16px;
-}
-.disenioSelectYButton
-{
-  border: solid black 1px;
-  height: 38px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-
-
+  .lenn
+  {
+    min-height: 100vh;
+    font-size: 18px;
+    background-image: url("../../../../assets/clinica.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  @media (min-width: 768px) {
+  .gradient-form {
+  height: 100vh !important;
+  }
+  }
+  @media (min-width: 769px) {
+  .gradient-custom-2 {
+      background: url("https://st4.depositphotos.com/3662505/20756/i/600/depositphotos_207561022-stock-photo-stethoscope-and-pills-on-table.jpg");
+      color: #fff;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      border-top-right-radius: .3rem;
+      border-bottom-right-radius: .3rem;
+      
+  }
+  .grad
+  {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  }
+  }
+  .po
+  {
+    height: 200px;
+  }
+  .fet {
+      height: 70px;
+    }
+  .invalid {
+    color: red;
+   }
+   .b
+   {
+     border: solid 2px black;
+     min-height: 99vh;
+   }
+  

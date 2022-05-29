@@ -1,4 +1,4 @@
-.tricito{
+ .tricito{
     background-image: url("https://img.freepik.com/vector-gratis/conjunto-personajes-dibujos-animados-medicos-enfermeras-concepto-equipo-personal-medico-hospital-ilustracion-vectorial_36082-662.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -113,8 +113,7 @@ input
 .container {
     max-width: 700px;
     padding: 60px;
-    background-color: papayawhip;  /* fallback for old browsers */
-    /* SHADOW */
+    background-color: papayawhip;
     -webkit-box-shadow: 1px 1px 31px -5px rgba(0,0,0,0.75);
     -moz-box-shadow: 1px 1px 31px -5px rgba(0,0,0,0.75);
     box-shadow: 1px 1px 31px -5px rgba(0,0,0,0.75);
@@ -122,15 +121,15 @@ input
 
 .fet {
     height: 95px;
-}
-/* h1
+} 
+ h1
 {
     text-align: center;
     padding-bottom: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 40px;
-} */
-.divespecial
+} 
+ .divespecial
 {
     display: flex;
     justify-content: space-between;
@@ -152,8 +151,8 @@ img
 .labelInputFile
 {
     position: absolute;
-    width: 8rem;
-    height: 8rem;
+    width: 5rem;
+    height: 5rem;
     background-color: white;
     border-radius: 100%;
     padding: 1rem;
@@ -234,10 +233,64 @@ option
 {
     display: block;
 }
-.divtama
+ .divtama
 {
     height: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
+}  
+
+
+
+
+.general
+{
+    padding: 0%;
+    background-image: url("https://img.freepik.com/vector-gratis/conjunto-personajes-dibujos-animados-medicos-enfermeras-concepto-equipo-personal-medico-hospital-ilustracion-vectorial_36082-662.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.particular
+{
+    margin: 0%;
+    opacity: 0.90;
+    filter: alpha(opacity=50);
+    zoom: 1;
+    background-color:burlywood;
+    padding: 40px;
+    color: #2f3233;
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.2);
+    background-color: antiquewhite;
+    border: solid 1px black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.espacioespecial
+{
+    margin-bottom: 8px;
+}
+.tete
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.margintop
+{
+    margin-top: 10px;
+}
+.centro
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }

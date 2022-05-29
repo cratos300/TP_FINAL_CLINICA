@@ -1,12 +1,34 @@
 
-
-<div class="tricito" *ngIf="paciente == false && especialista == false">
+<!-- <div class="tricito" *ngIf="paciente == false && especialista == false">
     <button class="btn btn-primary" (click) = "aceptar('paciente')">ALTA PACIENTE</button>
     <button class="btn btn-primary" (click) = "aceptar('especialista')" >ALTA ESPECIALISTA</button>
-</div>
-<app-alta-paciente (volver) = "cambiar($event)" *ngIf="paciente"></app-alta-paciente>
-<app-alta-especialista (volver) = "cambiar($event)" *ngIf="especialista"></app-alta-especialista>
+</div> -->
+<!-- <app-alta-paciente (volver) = "cambiar($event)" *ngIf="paciente"></app-alta-paciente>
+<app-alta-especialista (volver) = "cambiar($event)" *ngIf="especialista"></app-alta-especialista> -->
 
-    
-    
-    
+<div  class="container px-4 " id="custom-cards" >
+  <div class="row row-cols-1 row-cols-lg-2 minhei">
+    <div class="col">
+        <div class="d-flex justify-content-center aligns-item-center">
+            <h2 class="pb-2 border-bottom">ALTA PACIENTE</h2>
+        </div>
+      <div [routerLink]="['/altas/altaPaciente']" class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg divcol" style="background-image: url('unsplash-photo-1.jpg');">
+        <div class="d-flex justify-content-center align-items-center divtotall">
+            <img src="https://e7.pngegg.com/pngimages/690/36/png-clipart-animated-man-illustration-male-user-icon-icons-logos-emojis-users.png" alt="Bootstrap" width="500" height="500" class="rounded-circle border border-white">
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+        <div class="d-flex justify-content-center aligns-item-center">
+            <h2 class="pb-2 border-bottom">ALTA ESPECIALISTA</h2>
+        </div>
+      <div [routerLink]="['/altas/altaEspecialista']"  class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg divcol" style="background-image: url('unsplash-photo-2.jpg');">
+        <div class="d-flex justify-content-center align-items-center divtotall">
+              <img src="https://i.pinimg.com/736x/d7/64/18/d76418f406971b8b0c02d158e159d920.jpg" alt="Bootstrap" width="500" height="500" class="rounded-circle border border-white">
+        
+        </div>
+      </div>
+    </div>
+</div>
+</div>

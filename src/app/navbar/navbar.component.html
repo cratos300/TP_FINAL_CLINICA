@@ -1,0 +1,35 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+    <a class="navbar-brand" id="pepe">Clínica Médica</a>
+    <button id="blanquito" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <span class="navbar-nav mr-auto">
+             
+         </span>
+        <div class="navbar-nav" id="navbarText">
+          <a  class="navbar-brand esa " id="pepe"  >Login <span class="sr-only">(current)</span></a>
+          <a  class="navbar-brand esa" id="pepe"  >Registro</a>
+          <a class="navbar-brand esa" id="pepe" >LogOut</a>
+      </div>
+    </div>
+  </nav> -->
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" id="pepe">Clínica Médica</a>
+       <button id="blanquito" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <span class="avbar-nav me-auto mb-2 mb-lg-0">
+       
+         </span>
+        <div class="navbar-nav" id="navbarText">
+          <a  class="navbar-brand esa" *ngIf="auth.estalogeado == false" id="pepe" [routerLink]="['/ingreso/login']"  >Login </a>
+          <a  class="navbar-brand esa" *ngIf="auth.estalogeado == false"  id="pepe" [routerLink]="['/ingreso/registrar']"  >Registro</a>
+          <a (click) = "cerrar()" *ngIf="auth.estalogeado == true"  class="navbar-brand esa"  id="pepe" >LogOut</a>
+      </div>
+      </div>
+    </div>
+  </nav>

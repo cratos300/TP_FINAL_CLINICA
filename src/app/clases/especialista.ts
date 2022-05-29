@@ -9,6 +9,7 @@ export class Especialista {
     password!:string;
     imagen:any;
     perfil!:string;
+    foto_perfil!:any;
 
 
 }

@@ -1,37 +1,51 @@
-import { NgModule } from '@angular/core';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from "ngx-spinner";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PepeComponent } from './pepe/pepe.component';
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { AltaPacienteComponent } from './altas/alta-paciente/alta-paciente.component';
 import { AltaEspecialistaComponent } from './altas/alta-especialista/alta-especialista.component';
+import { BienvenidaComponent } from './bienvenida/bienvenida.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { ToastrModule } from 'ngx-toastr';
+import { GuardauthGuard } from './guards/guardauth.guard';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
 
     PepeComponent,
+     BienvenidaComponent,
+     NavbarComponent,
+     HomeComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule, // required animations module
+    NgxSpinnerModule,
+    ToastrModule.forRoot(),
     CommonModule,
     ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
   ],
-  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [GuardauthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

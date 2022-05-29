@@ -1,5 +1,7 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,AbstractControl} from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Especialista } from 'src/app/clases/especialista';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistrarUsuariosService } from 'src/app/services/registrar-usuarios.service';
@@ -24,7 +26,7 @@ export class AltaEspecialistaComponent implements OnInit {
   encontrado:boolean = false;
   @Output() volver: EventEmitter<any>= new EventEmitter<any>();
   
-  constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private se:SelecespecialistaService) 
+  constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private se:SelecespecialistaService, private router:Router,private spinner: NgxSpinnerService) 
   {
     this.se.getAll().valueChanges().subscribe(e=>{
     this.list = [];
@@ -44,12 +46,26 @@ export class AltaEspecialistaComponent implements OnInit {
       'edad': ['',[Validators.required, Validators.min(18),Validators.max(99)]],
       'email': ['',[Validators.required,Validators.pattern(/\w+@\w+\.+[a-z]/)]],
       'dni': ['',[Validators.required]],
-      'password': ['',[Validators.required]],
+      'password': ['',[Validators.required,this.validarcantidadCaracter]],
       'inputFile': ['',[Validators.required]],
       'especialidad': ['',[Validators.required]],
     });
   }
-
+  private validarcantidadCaracter(control: AbstractControl):null |object
+  {
+   const apellido = <any>control.value;
+   var booleano: boolean = isNaN(apellido);
+   if(apellido.length < 6 && booleano)
+   {
+    return {
+      caracter:true
+   };
+   }
+   else
+   {
+     return null;
+   }
+  }
   ac()
   {
     console.log(this.formGroup.getRawValue().inputFile);
@@ -59,6 +75,7 @@ export class AltaEspecialistaComponent implements OnInit {
     this.chequear(this.formGroup.getRawValue().email).then(e=>{
       if(e == false)
       { 
+        this.spinner.show();
         this.unespecialista.nombre = this.formGroup.getRawValue().nombre;
         this.unespecialista.apellido = this.formGroup.getRawValue().apellido;
         this.unespecialista.edad = this.formGroup.getRawValue().edad;
@@ -67,24 +84,47 @@ export class AltaEspecialistaComponent implements OnInit {
         this.unespecialista.password = this.formGroup.getRawValue().password;
         this.unespecialista.especialidad = this.formGroup.getRawValue().especialidad;
         this.unespecialista.perfil = "especialista"; 
-            this.us.create(this.unespecialista).then((e:any)=>{
-              this.auth.crearUsuario(this.unespecialista.email,this.unespecialista.password).then(e=>{
-                console.log(this.eventoGeneral.target);
-                let archivos = this.eventoGeneral.target.files;
+        this.auth.crearUsuario(this.unespecialista.email,this.unespecialista.password).then(e=>{
+          let archivos = this.eventoGeneral.target.files;
                 let reader = new FileReader();
-                reader.readAsDataURL(archivos[0]);
+                reader.readAsDataURL(archivos[0]);  
                 reader.onloadend = ()=>{
                 this.imagenes.push(reader.result);
-                this.storageService.subirImagen(this.unespecialista.nombre + "_" + "d", reader.result);
+           
+                
+                this.storageService.subirImagen(this.unespecialista.email + "_" + "d", reader.result).then(ese=>{
+                  this.unespecialista.foto_perfil = reader.result;
+                  this.auth.enviarCorreo();
+                  this.us.create(this.unespecialista).then((e:any)=>{
+                    this.auth.deslogear();
+                    this.spinner.hide();
+                        Swal.fire({
+                          position: 'center',
+                          icon: 'success',
+                          title: 'Especialista registrado correctamente!',
+                          showConfirmButton: false,
+                          timer: 2000,
+                        })
+                      }).catch(()=>{
+                        this.spinner.hide();
+                      })
+                  
+                }).catch(()=>{
+                  this.spinner.hide();
+                })
+              }
+            }).catch((e)=>{
+              if(e == "FirebaseError: Firebase: The email address is already in use by another account. (auth/email-already-in-use).")
+              {
                 Swal.fire({
                   position: 'center',
-                  icon: 'success',
-                  title: 'Especialista registrado correctamente!',
+                  icon: 'error',
+                  title: 'El email ya está en uso!',
                   showConfirmButton: false,
                   timer: 2000,
                 })
-             }
-              })
+              }
+              this.spinner.hide();
             })
             
             

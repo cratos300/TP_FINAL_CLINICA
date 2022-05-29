@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registrar.component.css']
 })
 export class RegistrarComponent implements OnInit {
+  pa:any = "Hola"
   paciente:boolean = false;
   especialista:boolean = false;
   constructor() 
