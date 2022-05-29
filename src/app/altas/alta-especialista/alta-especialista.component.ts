@@ -2,7 +2,9 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,AbstractControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ConfirmarEspecialista } from 'src/app/clases/confirmar-especialista';
 import { Especialista } from 'src/app/clases/especialista';
+import { AprobarEspecialistasService } from 'src/app/services/aprobar-especialistas.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistrarUsuariosService } from 'src/app/services/registrar-usuarios.service';
 import { SelecespecialistaService } from 'src/app/services/selecespecialista.service';
@@ -16,7 +18,8 @@ import Swal from 'sweetalert2';
 })
 export class AltaEspecialistaComponent implements OnInit {
 
-  a:string = "hola"
+  a:string = "hola";
+  aprobar: ConfirmarEspecialista;
   det!:string;
   list:any[] = [];
   eventoGeneral:any;
@@ -26,8 +29,9 @@ export class AltaEspecialistaComponent implements OnInit {
   encontrado:boolean = false;
   @Output() volver: EventEmitter<any>= new EventEmitter<any>();
   
-  constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private se:SelecespecialistaService, private router:Router,private spinner: NgxSpinnerService) 
+  constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private se:SelecespecialistaService,private spinner: NgxSpinnerService,private apEspecialista:AprobarEspecialistasService) 
   {
+    this.aprobar = new ConfirmarEspecialista();
     this.se.getAll().valueChanges().subscribe(e=>{
     this.list = [];
     e.forEach(element => {
@@ -84,7 +88,11 @@ export class AltaEspecialistaComponent implements OnInit {
         this.unespecialista.password = this.formGroup.getRawValue().password;
         this.unespecialista.especialidad = this.formGroup.getRawValue().especialidad;
         this.unespecialista.perfil = "especialista"; 
+        this.unespecialista.estado = "habilitado";
         this.auth.crearUsuario(this.unespecialista.email,this.unespecialista.password).then(e=>{
+          this.aprobar.confirmar = "pendiente";
+          this.aprobar.email = this.unespecialista.email;
+          this.apEspecialista.create(this.aprobar);
           let archivos = this.eventoGeneral.target.files;
                 let reader = new FileReader();
                 reader.readAsDataURL(archivos[0]);  

@@ -22,19 +22,8 @@ export class GuardauthGuard implements CanActivate {
     return this.auth.verificarlogeo().then(valor=>{
       if(valor != null)
       {
-         return this.auth.VerificarCorreo().then(e=>{
-          if(e == true)
-          {
-            this.auth.estalogeado = true;
-            return true;
-          }
-          else
-          {
-            this.ToastrSvc.warning("Valida el email..","Error");
-            this.router.navigateByUrl('/ingreso/login');
-            return false;
-          }
-        })
+         this.auth.estalogeado = true;
+         return true;
       }
       else
       {

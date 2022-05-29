@@ -10,6 +10,7 @@ export class Especialista {
     imagen:any;
     perfil!:string;
     foto_perfil!:any;
+    estado!:string;
 
 
 }
