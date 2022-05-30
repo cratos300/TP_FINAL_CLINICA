@@ -48,6 +48,7 @@ export class AltaPacienteComponent implements OnInit {
     this.chequear(this.formGroup.getRawValue().email).then(e=>{
       if(e == false)
       { 
+        this.spinner.show();
         this.contador = 0;
         this.unpaciente.nombre = this.formGroup.getRawValue().nombre;
         this.unpaciente.apellido = this.formGroup.getRawValue().apellido;

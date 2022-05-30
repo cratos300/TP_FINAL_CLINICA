@@ -187,7 +187,7 @@
             <select class="form-select" id="select" formControlName= "especialidad">
                 <option *ngFor="let item of list" [value]="item">{{item}}</option>
             </select>   
-            <img (click) = "borrar()"  class="iimg" src="https://thumbs.dreamstime.com/z/completamente-alrededor-de-icono-rojo-del-signo-menos-bot%C3%B3n-s%C3%ADmbolo-negativo-aislado-en-el-fondo-blanco-vector-eps-143476703.jpg" alt="">
+            <img (click) = "borrar()"  class="iimg" src="../../../assets/eliminar.jpg" alt="">
            </div>
            <div class="tete">
                <small class="invalid concreto" *ngIf = "formGroup.get('especialidad')?.hasError('required') && formGroup.get('especialidad')?.touched">Especialista requerida</small>
