@@ -1,10 +1,12 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Paciente } from 'src/app/clases/paciente';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistrarEspecialistaService } from 'src/app/services/registrar-especialista.service';
 import { RegistrarPacienteService } from 'src/app/services/registrar-paciente.service';
 import { RegistrarUsuariosService } from 'src/app/services/registrar-usuarios.service';
+import { SubirimagenService } from 'src/app/services/subirimagen.service';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -13,6 +15,8 @@ import Swal from 'sweetalert2'
   styleUrls: ['./alta-paciente.component.css']
 })
 export class AltaPacienteComponent implements OnInit {
+  contador:number = 0;
+  arra:Array<any> = [];
   eventoGeneral:any;
   unpaciente:Paciente;
   imagenes:any[] = [];
@@ -20,7 +24,7 @@ export class AltaPacienteComponent implements OnInit {
   encontrado:boolean = false;
   @Output() volver: EventEmitter<any>= new EventEmitter<any>();
   
-  constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService) 
+  constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private spinner: NgxSpinnerService) 
   {
     this.unpaciente = new Paciente();
   }
@@ -44,6 +48,7 @@ export class AltaPacienteComponent implements OnInit {
     this.chequear(this.formGroup.getRawValue().email).then(e=>{
       if(e == false)
       { 
+        this.contador = 0;
         this.unpaciente.nombre = this.formGroup.getRawValue().nombre;
         this.unpaciente.apellido = this.formGroup.getRawValue().apellido;
         this.unpaciente.edad = this.formGroup.getRawValue().edad;
@@ -52,19 +57,46 @@ export class AltaPacienteComponent implements OnInit {
         this.unpaciente.email = this.formGroup.getRawValue().email;
         this.unpaciente.password = this.formGroup.getRawValue().password;
         this.unpaciente.perfil = "paciente";
-            console.log("mensaje enviado");
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Paciente registrado correctamente!',
-              showConfirmButton: false,
-              timer: 2000,
-            })
-            this.us.create(this.unpaciente).then((e:any)=>{
-            })
-            
-            this.auth.crearUsuario(this.unpaciente.email,this.unpaciente.password).then(e=>{
-            })
+
+        let archivos = this.eventoGeneral.target.files.set;
+        for(let i  = 0; i<archivos.length;i++)
+        {
+          let reader = new FileReader();
+          reader.readAsDataURL(archivos[i]);  
+          reader.onloadend = ()=>{
+          this.imagenes.push(reader.result);
+          this.storageService.subirImagen(this.unpaciente.email + i + "_" + "d", reader.result).then(ese=>{
+            this.contador++;
+
+            if(this.contador == 1)
+            {
+              this.unpaciente.imagen1 = ese;
+            }
+            if(this.contador == 2)
+            {
+              this.unpaciente.imagen2 = ese;
+              this.us.create(this.unpaciente).then((e:any)=>{
+                this.auth.crearUsuario(this.unpaciente.email,this.unpaciente.password).then(e=>{
+                  this.auth.enviarCorreo();
+                  this.auth.deslogear();
+                  this.spinner.hide();
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Paciente registrado correctamente!',
+                    showConfirmButton: false,
+                    timer: 2000,
+                  })
+                })
+                  }).catch(()=>{
+                    this.spinner.hide();
+                  })
+            }  
+          }).catch(()=>{
+            this.spinner.hide();
+          })
+        }
+        }
       }  
       else
       {
@@ -102,7 +134,22 @@ export class AltaPacienteComponent implements OnInit {
 }
 cargarImagen(event:any)
 {
-  this.eventoGeneral = event;
+  this.arra.push(event.target.files[0]);
+  if(this.eventoGeneral != null)
+  {
+    this.eventoGeneral.target.files.set = this.arra;
+    console.log(this.eventoGeneral.target.files);
+
+    
+
+
+
+  }
+  else
+  {
+    this.eventoGeneral  = event;
+
+  }
 }
 
 }

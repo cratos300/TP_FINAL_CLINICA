@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit {
          
           })
         }
-        else
+        else if(efe.perfil == 'especialista')
         {
           if(efe.estado == 'deshabilitado')
           {
