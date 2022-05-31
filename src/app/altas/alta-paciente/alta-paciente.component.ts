@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Paciente } from 'src/app/clases/paciente';
 import { AuthService } from 'src/app/services/auth.service';
-import { RegistrarEspecialistaService } from 'src/app/services/registrar-especialista.service';
-import { RegistrarPacienteService } from 'src/app/services/registrar-paciente.service';
 import { RegistrarUsuariosService } from 'src/app/services/registrar-usuarios.service';
 import { SubirimagenService } from 'src/app/services/subirimagen.service';
 import Swal from 'sweetalert2'
@@ -45,10 +43,10 @@ export class AltaPacienteComponent implements OnInit {
   }
   aceptar()
   {
+    this.spinner.show();
     this.chequear(this.formGroup.getRawValue().email).then(e=>{
       if(e == false)
       { 
-        this.spinner.show();
         this.contador = 0;
         this.unpaciente.nombre = this.formGroup.getRawValue().nombre;
         this.unpaciente.apellido = this.formGroup.getRawValue().apellido;
@@ -101,6 +99,7 @@ export class AltaPacienteComponent implements OnInit {
       }  
       else
       {
+        this.spinner.hide();
       Swal.fire({
         position: 'center',
         icon: 'error',

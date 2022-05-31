@@ -1,3 +1,12 @@
-<div>
-    <h1>HOME</h1>
+<div *ngIf="auth.paciente">
+    <h1>Paciente</h1>
+</div>
+
+
+<div *ngIf="auth.especialista">
+    <h1>Especialista</h1>
+</div>
+
+<div *ngIf="auth.administrador">
+    <h1>Administrador</h1>
 </div>

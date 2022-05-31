@@ -166,6 +166,27 @@ export class LoginComponent implements OnInit {
     
         }
       }
+      else 
+      {
+        this.auth.login(this.correo,this.contrasenia).then(e=>{
+
+              this.sp = false;
+
+              this.router.navigateByUrl('/home');
+
+
+          //ir a cada parte dependiendo si es especialista o pacient
+        }  ).catch(e=>{
+          this.sp = false;
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Error interno contactate con el dueño del proyecto',
+            showConfirmButton: false,
+            timer: 4000,
+          })
+        })  
+      }
       }
       else
       {

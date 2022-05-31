@@ -101,7 +101,7 @@ export class AltaEspecialistaComponent implements OnInit {
            
                 
                 this.storageService.subirImagen(this.unespecialista.email + "_" + "d", reader.result).then(ese=>{
-                  this.unespecialista.foto_perfil = reader.result;
+                  this.unespecialista.foto_perfil = ese;
                   this.auth.enviarCorreo();
                   this.us.create(this.unespecialista).then((e:any)=>{
                     this.auth.deslogear();

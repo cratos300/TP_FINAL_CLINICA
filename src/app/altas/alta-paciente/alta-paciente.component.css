@@ -118,8 +118,8 @@ input
 }
 
 .fet {
-    height: 80px;
-}
+    height: 95px;
+} 
 /* h1
 {
     text-align: center;
@@ -157,8 +157,8 @@ img
 .labelInputFile
 {
     position: absolute;
-    width: 9.5rem;
-    height: 8rem;
+    width: 7rem;
+    height: 5rem;
     background-color: white;
     border-radius: 100%;
     padding: 1rem;
