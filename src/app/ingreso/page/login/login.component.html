@@ -14,23 +14,22 @@
                   <h4 class="mt-1 mb-5 pb-1">Equipo Médico</h4>
                 </div>
          
-                <form [formGroup] = "formGroup" (ngSubmit) = "ingresar()">
                   <div class="form-outline mb-4 fet">
                     <label class="form-label" for="form2Example11">Username</label>
-                    <input type="email" id="form2Example11" class="form-control letrageneral" id="email" formControlName= "email"
+                    <input type="email" id="form2Example11" class="form-control letrageneral" id="email" [(ngModel)]="correo"
                       placeholder="usuario@usuario.com" />
                       <small class="invalid" *ngIf = "formGroup.get('email')?.hasError('pattern') && formGroup.get('email')?.touched">Formato inválido.</small>
                   </div>
 
                   <div class="form-outline mb-4 fet">
                     <label class="form-label" for="form2Example22">Password</label> 
-                    <input type="password" id="form2Example22" class="form-control letrageneral" id="password" formControlName= "password" placeholder="Password" />
+                    <input type="password" id="form2Example22" class="form-control letrageneral" id="password"  placeholder="Password" [(ngModel)]="contrasenia" />
                     <small class="invalid" *ngIf = "formGroup.get('password')?.hasError('required') && formGroup.get('password')?.touched">La contraseña es requerido</small>
                     <small class="invalid" *ngIf = "formGroup.get('password')?.hasError('caracter') && formGroup.get('password')?.touched">Error. Tiene menos de 6 caracateres</small>
                   </div>
 
                   <div class="text-center">
-                    <button *ngIf="sp == false" class="btn btn-primary btn-block fa-lg grad mb-3 letrageneral" type="submit" [disabled] = "formGroup.invalid">
+                    <button *ngIf="sp == false" class="btn btn-primary btn-block grad mb-3 letrageneral" (click) = "ingresar()" >
                       INGRESAR</button>
                       <div class="spinner-border fa-lg  mb-4 letrageneral " role="status" *ngIf="sp == true">
    
@@ -38,14 +37,14 @@
                   </div>
                
 				  <div class="marginabajo">
-					<select class="disenioSelectYButton" aria-label="Default select example">
-						<option selected>ACCESO RAPIDO</option>
-						<option value="1">Especialista</option>
-						<option value="2">Paciente</option>
-            <option value="2">Administrador</option>
+					<select class="disenioSelectYButton" id="select" aria-label="Default select example" (change) = "autocompletar()">
+						<option  selected>ACCESO RAPIDO</option>
+						<option value="hernannvilar@gmail.com">Especialista</option>
+						<option value="hernan-vilar@hotmail.com">Paciente</option>
+            <option value="admin@admin.com">Administrador</option>
 					  </select>
 					</div>
-                </form>
+               
 
               </div>
             </div>

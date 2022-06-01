@@ -12,7 +12,7 @@ import { slideInAnimation } from '../assets/animation';
 export class AppComponent {
   constructor(private ToastrSvc:ToastrService,private spinner: NgxSpinnerService)
   {
-    this.spinner.show();
+   
   }
   title = 'tpfinal';
   llego(boleano:boolean)

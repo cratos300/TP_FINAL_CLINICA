@@ -17,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
 
-  correo:any = "dasd"
+  correo:any;
   contrasenia:any;
   paciente1:Paciente;
   public formGroup!: FormGroup;
@@ -67,9 +67,9 @@ export class LoginComponent implements OnInit {
   ingresar()
   {
     this.sp = true;
-    this.correo = this.formGroup.getRawValue().email;
-    this.contrasenia = this.formGroup.getRawValue().password;
-    this.chequiar(this.correo).then((efe:any)=>{
+    this.correo;
+    this.contrasenia;
+    this.chequiar(this.correo,this.contrasenia).then((efe:any)=>{
       if(efe!=null)
       {
         if(efe.perfil == 'paciente')
@@ -202,11 +202,11 @@ export class LoginComponent implements OnInit {
       }
     })
   }
-  chequiar(email:string):Promise<any>
+  chequiar(email:string,password:string):Promise<any>
   {
     return new Promise((resolve,reject)=>{
       this.us.getAll().get().subscribe(e=>{e.forEach(e=>{
-        if(e.data().email == email)
+        if(e.data().email == email && e.data().password == password)
         {
           resolve(e.data());
         }
@@ -228,6 +228,12 @@ export class LoginComponent implements OnInit {
     resolve(null);
   })
     })
+  }
+  autocompletar()
+  {
+    let data = (<HTMLInputElement>document.getElementById('select')).value;
+    this.correo = data;
+    this.contrasenia = "123456";
   }
 
 }

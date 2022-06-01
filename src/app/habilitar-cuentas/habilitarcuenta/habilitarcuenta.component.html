@@ -1,0 +1,40 @@
+<div class="general d-flex justify-content-center align-items-center">
+    <div>
+        <div class="d-flex justify-content-center align-items-center">
+            <h2>Seccion Habilitar Cuenta</h2>
+        </div>
+    <div class="segundogeneral">
+        <div class="table-responsive">
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Correo</th>
+                  <td scope="col">Especialidad</td>
+                  <td scope="col">Estado_Cuenta</td>
+                  <th scope="col">Habilitar</th>
+                  <th scope="col">Deshabilitar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of list; let i = index">
+                  <th >{{i}}</th>
+                  <td>{{item.email}} </td>
+                  <td>{{item.especialidad}} </td>
+                  <td>{{item.estado}} </td>
+                  <td (click) = "aceptar(item)">
+                      <i class="fa-solid fa-check"></i>
+                  </td>
+                  <td (click) = "rechazar(item)">
+                    <i class="fa-solid fa-xmark"></i>
+                  </td>
+                  
+                  
+                </tr>
+              </tbody>
+            </table>
+      </div>
+    
+    </div>
+</div>
+</div>

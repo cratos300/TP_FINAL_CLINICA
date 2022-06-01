@@ -15,9 +15,9 @@
     </div>
   </nav> -->
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark" *ngIf="auth.verifico">
     <div class="container-fluid">
-        <a class="navbar-brand" id="pepe">Clínica Médica</a>
+        <a class="navbar-brand" id="pepe">{{auth.quienes}}</a>
        <button id="blanquito" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -28,8 +28,12 @@
         <div class="navbar-nav" id="navbarText">
           <a  class="navbar-brand esa" *ngIf="auth.estalogeado == false" id="pepe" [routerLink]="['/ingreso/login']"  >Login </a>
           <a  class="navbar-brand esa" *ngIf="auth.estalogeado == false"  id="pepe" [routerLink]="['/ingreso/registrar']"  >Registro</a>
+          <a  *ngIf="(auth.estalogeado == true && (auth.especialista || auth.paciente))"  class="navbar-brand esa"  id="pepe" >Mis Turnos</a>
+          <a  *ngIf="auth.estalogeado == true && auth.administrador"  class="navbar-brand esa"  id="pepe" >Mis Horarios</a>
           <a (click) = "cerrar()" *ngIf="auth.estalogeado == true"  class="navbar-brand esa"  id="pepe" >LogOut</a>
+          
       </div>
       </div>
     </div>
   </nav>
+  

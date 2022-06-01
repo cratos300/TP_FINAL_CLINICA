@@ -10,17 +10,7 @@ import { RegistrarUsuariosService } from '../services/registrar-usuarios.service
 export class HomeComponent implements OnInit {
 
   constructor(private us:RegistrarUsuariosService,public auth:AuthService) 
-  {
-    
-//     this.us.getAll().get().subscribe(e=>{e.forEach(e=>{
-//       if(e.data().email == email)
-//       {
-        
-//       }
-//   })
-// })
-  
-    
+  {  
   }
 
   ngOnInit(): void {

@@ -26,7 +26,10 @@ export class AprobarEspecialistasService {
  
   update(id: string, data: any): Promise<void> {
     this.MensajesRef = this.db.collection(this.dbPath);
-    return this.MensajesRef.doc(id).update(data);
+    return this.MensajesRef.doc(id).update({
+      email:data.email,
+      confirmar: data.confirmar
+    });
   }
 
   delete(id: string): Promise<void> {

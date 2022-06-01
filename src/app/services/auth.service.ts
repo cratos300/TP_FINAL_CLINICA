@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { RegistrarUsuariosService } from './registrar-usuarios.service';
 
 
@@ -10,11 +11,13 @@ import { RegistrarUsuariosService } from './registrar-usuarios.service';
 export class AuthService {
   data:any;
   boolean:boolean = false;
+  verifico:boolean = false;
   public estalogeado = false;
   public administrador:boolean = false;
   public especialista:boolean = false;
   public paciente:boolean = false;
-  constructor(private a:AngularFireAuth,private router:Router,private us:RegistrarUsuariosService) { 
+  quienes:any = "Clínica Médica";
+  constructor(private a:AngularFireAuth,private router:Router,private us:RegistrarUsuariosService,private spinner: NgxSpinnerService) { 
   } 
   login(email:string,password:string)
   {
@@ -28,9 +31,9 @@ export class AuthService {
   deslogear()
   {
     this.a.signOut().then(e=>{
-      this.boolean = false;
-      localStorage.removeItem("usuario");
-      this.router.navigate(['']);
+      this.estalogeado = false;
+      this.quienes = "Clínica Médica";
+        this.router.navigate(['']);
     }).catch(e=>{
       alert("No se pudo deslogear");
     })
@@ -46,7 +49,8 @@ export class AuthService {
   verificarlogeo()
   {
     return new Promise((resolve,rejected)=>{
-     this.a.onAuthStateChanged(e=>{
+     this.a.onAuthStateChanged(e=>{  
+        this.spinner.hide();
         resolve(e);
       });
     })
@@ -68,18 +72,21 @@ export class AuthService {
         {
           if(e.data().perfil == 'especialista')
           {
+            this.quienes = "Especialista";
             this.especialista = true;
             this.paciente = false;
             this.administrador = false;
           }
           else if(e.data().perfil == 'paciente')
           {
+            this.quienes = "Paciente";
             this.paciente = true;
             this.especialista = false;
             this.administrador = false;
           }
           else
           {
+            this.quienes = "Administrador";
             this.paciente = false;
             this.especialista = false;
             this.administrador = true;

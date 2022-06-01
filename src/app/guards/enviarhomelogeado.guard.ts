@@ -1,21 +1,16 @@
 import { Injectable } from '@angular/core';
-
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { rejects } from 'assert';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { Component, OnInit } from '@angular/core';
-import {ToastrService} from 'ngx-toastr';
-import Swal from 'sweetalert2';
-import { RegistrarUsuariosService } from '../services/registrar-usuarios.service';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class GuardauthGuard implements CanActivate {
-  constructor(private auth:AuthService,private router:Router,private ToastrSvc:ToastrService,private us:RegistrarUsuariosService)
+export class EnviarhomelogeadoGuard implements CanActivate {
+  constructor(private auth:AuthService,private router:Router,private spinner: NgxSpinnerService)
   {
+    
   }
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -26,17 +21,16 @@ export class GuardauthGuard implements CanActivate {
         return this.auth.chegeneral(valor.email).then((e:any)=>{
           this.auth.estalogeado = true;
           this.auth.verifico = true;
+          this.router.navigateByUrl('/home');
           return true;
         })
       }
       else
       {
         this.auth.verifico = true;
-        this.router.navigateByUrl('/ingreso/login');
-        return false
+        return true
       }
     })
-  
   }
   
 }
