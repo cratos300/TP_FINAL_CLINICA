@@ -58,7 +58,9 @@ export class AuthService {
   crearUsuario(email:string,password:string)
   {
     return new Promise((resolve,rejected)=>{
+
       this.a.createUserWithEmailAndPassword(email,password).then((user:any)=>{
+        console.log("asd");
         resolve(user)
       }).catch(err => rejected(err));
     })
