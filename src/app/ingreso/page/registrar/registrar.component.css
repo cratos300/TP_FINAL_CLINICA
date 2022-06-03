@@ -1,117 +1,25 @@
-.tricito{
+.tamaño
+{
+    min-height: 300px;
+    min-width: 400px;
+    background-color:antiquewhite;
+    border-radius: 20px;
+}
+.general
+{
+    min-height: 100vh;
     background-image: url("../../../../assets/clinica.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 100vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
 }
-
-
-body{
-    background:none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-}
-
-#advanced-search-form{
-    opacity: 0.90;
-    filter: alpha(opacity=50);
-    zoom: 1;
-    background-color: #fff;
-    width: 900px;
-    height: 500px;
-    padding: 40px;
-    color: #2f3233;
-    box-shadow: 6px 6px 6px rgba(0,0,0,0.2);
-}
-
-#advanced-search-form h2{
-    padding-bottom: 20px;
-    margin: 10px 20px;
+.btn-circle.btn-xl {
+    width: 140px;
+    height: 140px;
+    padding: 10px 16px;
+    border-radius: 100px;
     font-size: 24px;
+    line-height: 1.33;
 }
 
-#advanced-search-form hr{
-    margin-top: 38px;
-    margin-bottom: 54px;
-    margin-left:3px;
-    border: 1px solid #cccccc;
 
-}
-
-#advanced-search-form .form-group{
-	margin-bottom: 20px;
-    margin-left:20px;
-	width: 30%;
-    float:left;
-    text-align: left;
-}
-
-#advanced-search-form .form-control{
-    padding: 12px 20px;
-    height: auto;
-    border-radius: 2px;
-}
-
-#advanced-search-form .radio-inline{
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-#advanced-search-form .gender{
-    width: 30%;
-    margin-top: 30px;
-    padding-left: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-#advanced-search-form .btn{
-    width: 46%;
-    margin: 20px auto 0;
-    display: block;
-    outline: none;
-}
-
-.invalid {
-    color: red;
-}
-input
-{
-    font-size: 15px;
-    padding: 12px 20px;
-
-}
-.botonPrincipal
-{
-    font-size: 20px;
-}
-
-.fet {
-    height: 80px;
-}
-h1
-{
-    text-align: center;
-    padding-bottom: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 40px;
-}
-.minhei
-{
-    min-height: 500px;
-}
-.divtotall
-{
-    height: 100%;
-}
-.divcol:hover
-{
-    border: solid 10px blue;
-    background-color: antiquewhite;
-}

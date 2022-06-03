@@ -112,22 +112,6 @@ export class LoginComponent implements OnInit {
           }
           else
           {
-          this.revisarconfirmacion(this.correo).then(e=>{
-            if(e != null)
-            {
-              if(e.confirmar == "pendiente")
-              {
-                this.sp = false;
-                Swal.fire({
-                      position: 'center',
-                      icon: 'warning',
-                      title: 'Un administrador debe confirmar tu cuenta.',
-                      showConfirmButton: false,
-                      timer: 4000,
-                    })
-              }
-              else if(e.confirmar == "confirmado")
-              {
                       this.auth.login(this.correo,this.contrasenia).then(e=>{
                         this.auth.VerificarCorreo().then(e=>{
                           if(e == true)
@@ -148,22 +132,6 @@ export class LoginComponent implements OnInit {
                       }  ).catch(e=>{
                         alert(e);
                       })  
-              }
-               else 
-               {
-                this.sp = false;
-                Swal.fire({
-                  position: 'center',
-                  icon: 'error',
-                  title: 'El administrador no te quiere en el sistema.',
-                  showConfirmButton: false,
-                  timer: 4000,
-                })
-               }
-            }
-          })
-     
-    
         }
       }
       else 
@@ -229,10 +197,20 @@ export class LoginComponent implements OnInit {
   })
     })
   }
-  autocompletar()
+  autocompletar(data:string)
   {
-    let data = (<HTMLInputElement>document.getElementById('select')).value;
-    this.correo = data;
+    if(data == 'admin@admin.com')
+    {
+      this.correo = "admin@admin.com";
+    }
+    else if(data == 'hernannvilar@gmail.com')
+    {
+      this.correo = 'hernannvilar@gmail.com'
+    }
+    else if(data == 'hernan-vilar@gmail.com')
+    {
+      this.correo = 'hernan-vilar@hotmail.com'
+    }
     this.contrasenia = "123456";
   }
 

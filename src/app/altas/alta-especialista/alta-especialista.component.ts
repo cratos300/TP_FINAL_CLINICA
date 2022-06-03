@@ -29,7 +29,7 @@ export class AltaEspecialistaComponent implements OnInit {
   encontrado:boolean = false;
   @Output() volver: EventEmitter<any>= new EventEmitter<any>();
   
-  constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private se:SelecespecialistaService,private spinner: NgxSpinnerService,private apEspecialista:AprobarEspecialistasService) 
+  constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private se:SelecespecialistaService,private spinner: NgxSpinnerService) 
   {
     this.aprobar = new ConfirmarEspecialista();
     this.se.getAll().valueChanges().subscribe(e=>{
@@ -88,7 +88,7 @@ export class AltaEspecialistaComponent implements OnInit {
         this.unespecialista.password = this.formGroup.getRawValue().password;
         this.unespecialista.especialidad = this.formGroup.getRawValue().especialidad;
         this.unespecialista.perfil = "especialista"; 
-        this.unespecialista.estado = "habilitado";
+        this.unespecialista.estado = "deshabilitado";
 
          let archivos = this.eventoGeneral.target.files;
                 let reader = new FileReader();
@@ -96,10 +96,6 @@ export class AltaEspecialistaComponent implements OnInit {
           reader.onloadend = ()=>{
           this.imagenes.push(reader.result);
           this.storageService.subirImagen(this.unespecialista.email + "_" + "d", reader.result).then(ese=>{
-	        this.aprobar.confirmar = "pendiente";
-          this.aprobar.email = this.unespecialista.email;
-          
-          this.apEspecialista.create(this.aprobar);
               this.unespecialista.imagen = ese;
               this.us.create(this.unespecialista).then((e:any)=>{
                 this.auth.crearUsuario(this.unespecialista.email,this.unespecialista.password).then(e=>{
