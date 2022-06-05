@@ -11,7 +11,7 @@ import { RegistrarUsuariosService } from '../services/registrar-usuarios.service
 })
 export class NavbarComponent implements OnInit {
 
-
+color:any = 'red';
 @Output() evento: EventEmitter<any> = new EventEmitter<any>();
   constructor(public  auth:AuthService,private router:Router,public sv:RegistrarUsuariosService,private spinner: NgxSpinnerService) 
   {
@@ -54,5 +54,10 @@ export class NavbarComponent implements OnInit {
   {
     this.auth.estalogeado = false;
     this.auth.deslogear();
+  }
+  efe(data:any)
+  {
+    this.auth.quienes = data;
+    alert("entro")
   }
 }

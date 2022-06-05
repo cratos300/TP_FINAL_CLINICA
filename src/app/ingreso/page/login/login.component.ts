@@ -207,7 +207,7 @@ export class LoginComponent implements OnInit {
     {
       this.correo = 'hernannvilar@gmail.com'
     }
-    else if(data == 'hernan-vilar@gmail.com')
+    else if(data == 'hernan-vilar@hotmail.com')
     {
       this.correo = 'hernan-vilar@hotmail.com'
     }

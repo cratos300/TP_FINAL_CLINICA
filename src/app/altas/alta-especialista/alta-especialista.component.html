@@ -184,7 +184,7 @@
               <label for="select" class="form-label" >Especialidad</label>
             </div>
             <div class="juntar">
-            <select class="form-select" id="select" formControlName= "especialidad">
+            <select class="form-select" id="select" formControlName= "especialidad" (change) = "cambiar()">
                 <option *ngFor="let item of list" [value]="item">{{item}}</option>
             </select>   
             <img (click) = "borrar()"  class="iimg" src="../../../assets/eliminar.jpg" alt="">
@@ -196,14 +196,25 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12  fet divtama">
+      <div class="row mt-1">
+        <div class="col-6  fet divtama">
             <input  type="file" accept=".png, .jpg, .jpeg" multiple (change) = "cargarImagen($event)" formControlName="inputFile"  id="inputFile">
             <label class="labelInputFile" for="inputFile">IMAGEN </label>
             <div class="tete">
                 <small class="invalid" *ngIf = "formGroup.get('inputFile')?.hasError('required') && formGroup.get('inputFile')?.touched">El archivo es requerido</small>   
             </div>
         </div>
+        <div class="col-6 fet listadoEsp" >
+          <p class="titEsp">Listado</p>
+          <div class="mm" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+          <div class="espItem" *ngFor="let item of listoriginal" >
+            <div class="ddd">
+              <span class="nombreEsp">{{item}}</span>
+              <i class="fa-solid fa-ban" ></i>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
       <div class="row margintop">
           <button type="submit" class="btn btn-info btn-lg btn-responsive botonPrincipal" [disabled] = "formGroup.invalid" id="search">REGISTRAR</button>

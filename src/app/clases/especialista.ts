@@ -4,7 +4,7 @@ export class Especialista {
     apellido!:string;
     edad!:number;
     dni!:number;
-    especialidad!:string;
+    especialidades!:any;
     email!:string;
     password!:string;
     imagen:any;

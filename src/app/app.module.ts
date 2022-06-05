@@ -18,6 +18,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import { GuardauthGuard } from './guards/guardauth.guard';
+import { CambiarColorDirective } from './directivas/cambiar-color.directive';
+
 
 
 
@@ -26,11 +28,13 @@ import { GuardauthGuard } from './guards/guardauth.guard';
 @NgModule({
   declarations: [
     AppComponent,
-
+    
     PepeComponent,
      BienvenidaComponent,
      NavbarComponent,
      HomeComponent,
+     CambiarColorDirective,
+
   ],
   imports: [
     BrowserModule,

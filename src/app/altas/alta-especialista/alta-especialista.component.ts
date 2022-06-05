@@ -22,6 +22,7 @@ export class AltaEspecialistaComponent implements OnInit {
   aprobar: ConfirmarEspecialista;
   det!:string;
   list:any[] = [];
+  listoriginal:any[] = [];
   eventoGeneral:any;
   unespecialista:Especialista;
   imagenes:any[] = [];
@@ -32,14 +33,15 @@ export class AltaEspecialistaComponent implements OnInit {
   constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private se:SelecespecialistaService,private spinner: NgxSpinnerService) 
   {
     this.aprobar = new ConfirmarEspecialista();
-    this.se.getAll().valueChanges().subscribe(e=>{
-    this.list = [];
-    e.forEach(element => {
-      this.list.push(element.especialidad);
+    this.list = ['Odontologo','Traumatologo','Neurologo']
+    // this.se.getAll().valueChanges().subscribe(e=>{
+    // this.list = [];
+    // e.forEach(element => {
+    //   this.list.push(element.especialidad);
       
-    });
+    // });
       
-    })
+    // })
     this.unespecialista = new Especialista();
   }
 
@@ -86,7 +88,7 @@ export class AltaEspecialistaComponent implements OnInit {
         this.unespecialista.dni = this.formGroup.getRawValue().dni;
         this.unespecialista.email = this.formGroup.getRawValue().email;
         this.unespecialista.password = this.formGroup.getRawValue().password;
-        this.unespecialista.especialidad = this.formGroup.getRawValue().especialidad;
+        this.unespecialista.especialidades = this.listoriginal;
         this.unespecialista.perfil = "especialista"; 
         this.unespecialista.estado = "deshabilitado";
 
@@ -159,9 +161,8 @@ cargarImagen(event:any)
 agregar()
 {
  let data = (<HTMLInputElement>document.getElementById('agregar')).value;
- this.list = [];
-  let dato = {especialidad:data}
-  this.se.create(dato);
+
+  this.list.push(data);
 }
 borrar()
 {
@@ -189,6 +190,10 @@ revisar(especial:any)
                  })
           })
 
+}
+cambiar()
+{
+  this.listoriginal.push(this.formGroup.getRawValue().especialidad);
 }
 
 } 

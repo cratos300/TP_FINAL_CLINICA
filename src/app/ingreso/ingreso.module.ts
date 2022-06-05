@@ -8,6 +8,8 @@ import { LoginComponent } from './page/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AltaPacienteComponent } from '../altas/alta-paciente/alta-paciente.component';
 import { AltaEspecialistaComponent } from '../altas/alta-especialista/alta-especialista.component';
+import { CambiartamanioDirective } from '../directivas/cambiartamanio.directive';
+import { NegritaDirective } from '../directivas/negrita.directive';
 
 
 
@@ -17,6 +19,8 @@ import { AltaEspecialistaComponent } from '../altas/alta-especialista/alta-espec
     LoginComponent,
     AltaPacienteComponent,
     AltaEspecialistaComponent,
+    CambiartamanioDirective,
+    NegritaDirective,
   ],
   imports: [
     CommonModule,
