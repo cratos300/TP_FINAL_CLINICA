@@ -19,19 +19,19 @@ Usuarios: Administrador,Especialista,Paciente.
 
 _Clonar repositorio_
 ```
-git clone 
+git clone https://github.com/cratos300/TP_FINAL_CLINICA.git
 ```
-_Instalacion de paquetes_
+_Instalacion de paquetes_ (Pararse en la raíz del proyecto)
 
 ```
-ng build
+npm install
 ```
 
-_Ejecucion local_
+_Ejecucion local del proyecto_
 
 ```
 ng serve
 ```
 
-_Ingresa a `http://localhost:4200/` para la prueba local._
+_Escribir  `http://localhost:4200/` en su navegador para la prueba local del sistema_
 
