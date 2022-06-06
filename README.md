@@ -14,7 +14,7 @@ TP_FINAL_CLINICA: Nuestro sistema nos permite el control de una clinica online c
 *Github<br>
 
 ### ⟳ Donde encuentro esta Página? ⟲
-[.... ](https://tpfinal-c50ae.web.app/)               ⬅
+https://tpfinal-c50ae.web.app/             ⬅
 
 
 
