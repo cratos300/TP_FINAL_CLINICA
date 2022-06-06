@@ -13,7 +13,7 @@ Usuarios: Administrador,Especialista,Paciente.
 
 ### Donde encuentro esta Página?
 ....
-![image](https://user-images.githubusercontent.com/25481170/172087360-9fb5ed6e-fa83-400e-954a-313dfa436962.png)
+
 
 
 ## Instalación para el uso del sistema.
