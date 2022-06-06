@@ -4,9 +4,9 @@ TP_FINAL_CLINICA: Nuestro sistema nos permite el control de una clinica online c
 Usuarios: Administrador,Especialista,Paciente.
 
 ###Herramientas para la construccion del sistema. 🔨 <br>
-*Angular.
-*Bootstrap.
-*Material.
-*Firebase.
-*Heroku
-*Github
+*Angular.<br>
+*Bootstrap.<br>
+*Material.<br>
+*Firebase.<br>
+*Heroku<br>
+*Github<br>
