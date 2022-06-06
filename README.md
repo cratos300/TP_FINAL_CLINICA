@@ -17,3 +17,18 @@ Usuarios: Administrador,Especialista,Paciente.
 
 ## Instalación para el uso del sistema.
 
+
+_Instalacion de paquetes_
+
+```
+ng build
+```
+
+_Ejecucion local_
+
+```
+ng serve
+```
+
+_Ingresa a `http://localhost:4200/` para la prueba local._
+
