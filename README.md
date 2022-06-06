@@ -17,7 +17,10 @@ Usuarios: Administrador,Especialista,Paciente.
 
 ## Instalación para el uso del sistema.
 
-
+_Clonar repositorio_
+```
+git clone 
+```
 _Instalacion de paquetes_
 
 ```
