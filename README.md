@@ -4,7 +4,7 @@ TP_FINAL_CLINICA: Nuestro sistema nos permite el control de una clinica online c
 🤵 Administrador. <br> 
 👨‍⚕️ Especialista.<br>
 🧍 Paciente.
-
+⌚ ⌛
 ### Herramientas para la construcción del sistema. 🔨 
 *Angular.<br>
 *Bootstrap.<br>
@@ -13,7 +13,7 @@ TP_FINAL_CLINICA: Nuestro sistema nos permite el control de una clinica online c
 *Heroku<br>
 *Github<br>
 
-### Donde encuentro esta Página?
+### ⟳ Donde encuentro esta Página? ⟲
 ....
 
 
