@@ -48,6 +48,7 @@ import { CambiarColorDirective } from './directivas/cambiar-color.directive';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [GuardauthGuard],

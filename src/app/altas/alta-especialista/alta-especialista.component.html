@@ -77,7 +77,7 @@
 <div class="particular">
     <form [formGroup] = "formGroup" (ngSubmit) = "aceptar()">
         <div class="d-flex justify-content-center aligns-items-center">
-            <h2>ALTA ESPECIALISTA</h2>
+            <h2 >ALTA ESPECIALISTA</h2>
         </div>
      <div class="row">
         <div class="col">
@@ -206,19 +206,34 @@
         </div>
         <div class="col-6 fet listadoEsp" >
           <p class="titEsp">Listado</p>
-          <div class="mm" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+          <div class="mm" #scrollMe >
           <div class="espItem" *ngFor="let item of listoriginal" >
             <div class="ddd">
               <span class="nombreEsp">{{item}}</span>
-              <i class="fa-solid fa-ban" ></i>
+              <i class="fa-solid fa-ban" (click) = "borrar2(item)" ></i>
             </div>
           </div>
         </div>
       </div>
       </div>
-      <div class="row margintop">
-          <button type="submit" class="btn btn-info btn-lg btn-responsive botonPrincipal" [disabled] = "formGroup.invalid" id="search">REGISTRAR</button>
+      <div class="row">
+      <div class="col-6">
+        <input class="form-control mt-3" id="display" value={{capcha}} disabled>
       </div>
+
+      <div class="col-6">
+        <input  invalid class="form-control mt-3" id="entrada" autocomplete="doNotAutoComplete"
+          formControlName="capchaInput" [(ngModel)]="cap" placeholder="Escriba el codigo"  >
+          <span class="form-control mt-3" id="mensaje" *ngIf="(!(cap == capcha)) && formGroup.get('capchaInput')?.touched ">  Capcha INCORRECTO ❌</span>
+      </div>
+
+
+      
+    </div>
+      <div class="row margintop">
+          <button type="submit" class="btn btn-info btn-lg btn-responsive botonPrincipal" [disabled] = "formGroup.invalid || (capcha != cap)" id="search">REGISTRAR</button>
+      </div>
+      
       </form>
     </div>
 

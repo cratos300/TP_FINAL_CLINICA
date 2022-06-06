@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./alta-especialista.component.css']
 })
 export class AltaEspecialistaComponent implements OnInit {
-
+  public siteKey = '6Lck8EcgAAAAAI7iawlR4oS6ut7apOm6QDJihYIN'
   a:string = "hola";
   aprobar: ConfirmarEspecialista;
   det!:string;
@@ -26,10 +26,11 @@ export class AltaEspecialistaComponent implements OnInit {
   eventoGeneral:any;
   unespecialista:Especialista;
   imagenes:any[] = [];
+  capcha:any = '543'
+  cap:any = ''
   public formGroup!: FormGroup;
   encontrado:boolean = false;
   @Output() volver: EventEmitter<any>= new EventEmitter<any>();
-  
   constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private se:SelecespecialistaService,private spinner: NgxSpinnerService) 
   {
     this.aprobar = new ConfirmarEspecialista();
@@ -55,6 +56,8 @@ export class AltaEspecialistaComponent implements OnInit {
       'password': ['',[Validators.required,this.validarcantidadCaracter]],
       'inputFile': ['',[Validators.required]],
       'especialidad': ['',[Validators.required]],
+      'capchaInput' : ['', Validators.required],
+      
     });
   }
   private validarcantidadCaracter(control: AbstractControl):null |object
@@ -194,6 +197,18 @@ revisar(especial:any)
 cambiar()
 {
   this.listoriginal.push(this.formGroup.getRawValue().especialidad);
+}
+borrar2(data:any)
+{
+  console.log(data);
+  
+  for(let i = 0; i<this.listoriginal.length;i++)
+  {
+    if(data == this.list[i])
+    {
+      this.listoriginal.splice(i,i);
+    }
+  }
 }
 
 } 
