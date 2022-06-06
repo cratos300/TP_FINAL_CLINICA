@@ -38,6 +38,6 @@ ng serve
 
 _Escribir  `http://localhost:4200/` en su navegador para la prueba local del sistema_
 ▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰
+![principal]([https://github.com/tanodam/TP2_ClinicaOnline_LABIV/blob/master/img/login.gif](https://tpfinal-c50ae.web.app/assets/NbZNVI_b6b115a7da26ecfe9e27f0b585e39743_00-00-03_00-00-30_2.gif))
 
- <img wd src="https://tpfinal-c50ae.web.app/assets/NbZNVI_b6b115a7da26ecfe9e27f0b585e39743_00-00-03_00-00-30_2.gif" width="400" height="300" alt="">
 
