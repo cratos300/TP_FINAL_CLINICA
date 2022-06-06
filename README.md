@@ -44,7 +44,7 @@ En esta seccion hay que completar el formulario que se ve en la imagen para dar 
 
 ## REGISTRAR PACIENTE:
 En esta seccion hay que completar el formulario que se ve en la imagen para dar de alta un paciente <br>
-![pacientee](https://user-images.githubusercontent.com/25481170/172217169-1bb68c55-a183-43ba-b4d3-9f0ff6218b76.png)
+![pacientee](https://user-images.githubusercontent.com/25481170/172217614-5b98f8e5-d3c7-458d-9828-1a9f7351d214.png)
 
 
 
