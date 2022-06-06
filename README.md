@@ -21,7 +21,7 @@ _Clonar repositorio_
 ```
 git clone https://github.com/cratos300/TP_FINAL_CLINICA.git
 ```
-_Instalacion de paquetes_ (Pararse en la raíz del proyecto)
+_Instalacion de paquetes_ (Pararse en la raíz del proyecto y ejecutar el siguiente comando)
 
 ```
 npm install
