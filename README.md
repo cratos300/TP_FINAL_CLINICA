@@ -38,7 +38,8 @@ ng serve
 
 _Escribir  `http://localhost:4200/` en su navegador para la prueba local del sistema_
 ▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰
-![NbZNVI_b6b115a7da26ecfe9e27f0b585e39743_00-00-03_00-00-30_2](https://user-images.githubusercontent.com/25481170/172195033-2f07b7f4-f47c-4dda-86e2-7466a44ce30c.gif)
+![NbZNVI_4c163037649d264ddeccd81ddfac53d4_00-00-00_00-00-17_2](https://user-images.githubusercontent.com/25481170/172201332-05df4bf3-5ca4-44c3-8a93-effd31d9c51b.gif)
+
 
 
 
