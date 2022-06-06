@@ -5,7 +5,7 @@ TP_FINAL_CLINICA: Nuestro sistema nos permite el control de una clinica online c
 👨‍⚕️ Especialista.<br>
 🧍 Paciente.
 
-### Herramientas para la construccion del sistema. 🔨 
+### Herramientas para la construcción del sistema. 🔨 
 *Angular.<br>
 *Bootstrap.<br>
 *Material.<br>
@@ -37,4 +37,5 @@ ng serve
 ```
 
 _Escribir  `http://localhost:4200/` en su navegador para la prueba local del sistema_
+▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰
 
