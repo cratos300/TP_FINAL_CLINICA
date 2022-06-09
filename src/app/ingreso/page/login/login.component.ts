@@ -199,18 +199,7 @@ export class LoginComponent implements OnInit {
   }
   autocompletar(data:string)
   {
-    if(data == 'admin@admin.com')
-    {
-      this.correo = "admin@admin.com";
-    }
-    else if(data == 'hernannvilar@gmail.com')
-    {
-      this.correo = 'hernannvilar@gmail.com'
-    }
-    else if(data == 'hernan-vilar@hotmail.com')
-    {
-      this.correo = 'hernan-vilar@hotmail.com'
-    }
+      this.correo = data;
     this.contrasenia = "123456";
   }
 

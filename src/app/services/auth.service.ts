@@ -17,6 +17,7 @@ export class AuthService {
   public especialista:boolean = false;
   public paciente:boolean = false;
   quienes:any = "Clínica Médica";
+  correologeado:any;
   constructor(private a:AngularFireAuth,private router:Router,private us:RegistrarUsuariosService,private spinner: NgxSpinnerService) { 
   } 
   login(email:string,password:string)

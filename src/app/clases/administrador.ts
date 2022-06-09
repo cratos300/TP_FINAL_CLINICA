@@ -3,7 +3,7 @@ export class Administrador {
     apellido!:string;
     edad!:string;
     dni!:string;
-    mail!:string;
+    email!:string;
     password!:string;
     imagen!:string;
     perfil!:string;

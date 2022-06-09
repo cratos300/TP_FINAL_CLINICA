@@ -22,6 +22,7 @@ color:any = 'red';
       {
       this.auth.estalogeado = true;
        this.sv.getAll().get().subscribe(ep=>ep.forEach((ese:any)=>{
+
          if(ese.data().email == e.email)
          {
            if(ese.data().perfil == 'administrador')

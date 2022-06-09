@@ -69,7 +69,7 @@ export class AltaPacienteComponent implements OnInit {
 
             if(this.contador == 1)
             {
-              this.unpaciente.imagen1 = ese;
+              this.unpaciente.imagen = ese;
             }
             if(this.contador == 2)
             {

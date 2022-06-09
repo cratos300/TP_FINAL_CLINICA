@@ -6,7 +6,7 @@ export class Paciente {
     obraSocial!:string;
     email!:string;
     password!:string;
-    imagen1:any;
+    imagen:any;
     imagen2:any;
     perfil!:string;
 }

@@ -23,6 +23,7 @@ export class GuardauthGuard implements CanActivate {
     return this.auth.verificarlogeo().then((valor:any)=>{
       if(valor != null)
       {
+        this.auth.correologeado = valor.email;
         return this.auth.chegeneral(valor.email).then((e:any)=>{
           this.auth.estalogeado = true;
           this.auth.verifico = true;

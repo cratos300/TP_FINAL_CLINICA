@@ -7,11 +7,14 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import {FormsModule  , ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { AltaAdministradorComponent } from './alta-administrador/alta-administrador.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AltaAdministradorComponent
+  ],
   imports: [
 
     CommonModule,

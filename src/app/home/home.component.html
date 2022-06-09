@@ -1,17 +1,33 @@
-<div *ngIf="auth.paciente">
-    <h1>Paciente</h1>
+<div *ngIf="auth.paciente" class="general d-flex justify-content-center align-items-center">
+    <div class="tamaño d-flex justify-content-center align-items-center">
+        <div>
+        <div class="d-flex justify-content-center align-items-center mt-2">
+            <button class="btn btn-primary" [routerLink]="['/miperfil']">Mi Perfil</button>
+        </div>
+    </div>
+    </div>
 </div>
 
 
-<div *ngIf="auth.especialista">
-    <h1>Especialista</h1>
+<div *ngIf="auth.especialista" class="general d-flex justify-content-center align-items-center">
+    <div class="tamaño d-flex justify-content-center align-items-center">
+        <div>
+        <div class="d-flex justify-content-center align-items-center mt-2">
+            <button class="btn btn-primary" [routerLink]="['/miperfil']">Mi Perfil</button>
+        </div>
+    </div>
+    </div>
 </div>
 
 <div *ngIf="auth.administrador" class="general d-flex justify-content-center align-items-center">
     <div class="tamaño d-flex justify-content-center align-items-center">
         <div>
         <div class="d-flex justify-content-center align-items-center mt-2">
-            <button class="btn btn-primary">Alta Usuarios</button>
+            <button class="btn btn-primary" [routerLink]="['/ingreso/registrar']">Alta Paciente/Especialista</button>
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-2">
+            <button class="btn btn-primary" [routerLink]="['/altas/altaAdministrador']" >Alta Administrador</button>
+            
         </div>
         <div class="d-flex justify-content-center align-items-center mt-2">
             <button class="btn btn-primary" [routerLink]="['/habilitarCuenta']" routerLinkActive="router-link-active"  >Habilitar/Inhabilitar Cuentas</button>
@@ -19,6 +35,13 @@
         <div class="d-flex justify-content-center align-items-center mt-2">
             <button class="btn btn-primary">Solicitar Turno</button>
         </div>
+        <div class="d-flex justify-content-center align-items-center mt-2">
+            <button class="btn btn-primary">Logs</button>
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-2">
+            <button class="btn btn-primary" [routerLink]="['/miperfil']">Mi perfil</button>
+        </div>
+        
     </div>
     </div>
 

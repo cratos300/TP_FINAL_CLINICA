@@ -1,0 +1,92 @@
+<div >
+            <div class="row container py-4" *ngIf="cargo && auth.paciente == false">
+                <div class="col-md-6">
+                  <div class="">
+                    
+                    <img [src]="datoUsuario.imagen" alt="">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="h-100 p-5 bg-light border rounded-3">
+                    <h1>DATOS USUARIO</h1>
+                    <span>Nombre: {{datoUsuario.nombre}} </span>
+                    <br>
+                    <span>Apellido: {{datoUsuario.apellido}}</span>
+                    <br>
+                    <span>Edad: {{datoUsuario.edad}}</span>
+                    <br>
+                    <span>DNI: {{datoUsuario.dni}}</span>
+                    <br>
+                    <span>Perfil: {{datoUsuario.perfil}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row  py-4" *ngIf="cargo && auth.paciente == true">
+                <div class="col-md-4">
+                  <div class="">
+                    
+                    <img [src]="datoUsuario.imagen" alt="">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="">
+                    
+                    <img [src]="datoUsuario.imagen2" alt="">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="h-100 p-5 bg-light border rounded-3">
+                    <h1>DATOS USUARIO</h1>
+                    <span>Nombre: {{datoUsuario.nombre}} </span>
+                    <br>
+                    <span>Apellido: {{datoUsuario.apellido}}</span>
+                    <br>
+                    <span>Edad: {{datoUsuario.edad}}</span>
+                    <br>
+                    <span>DNI: {{datoUsuario.dni}}</span>
+                    <br>
+                    <span>Perfil: {{datoUsuario.perfil}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6" *ngIf="auth.especialista">
+                <form class="row" >
+                  <div class="col-6">
+                    <p>Dias disponible:</p>
+                    <ul>
+                      <li>
+                        Lunes <input type="checkbox" (click) = "dias('lunes')">
+                      </li>
+                      <li>
+                        Martes <input type="checkbox" (click) = "dias('martes')">
+                      </li>
+                      <li>
+                        Miercoles <input type="checkbox" (click) = "dias('mercoles')">
+                      </li>
+                      <li>
+                        Jueves <input type="checkbox" (click) = "dias('jueves')">
+                      </li>
+                      <li>
+                        Viernes <input type="checkbox" (click) = "dias('viernes')">
+                      </li>
+                      <li>
+                        Sabado <input type="checkbox" (click) = "dias('sabado')" >
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-6">
+                    <label for="dni" class="form-label">Horario disponible</label>
+                      <select class="form-control" formControlName="horario">
+                        <option value="">Seleccione uno</option>
+                        <option value="todo">Jornada completa (8:00 - 19:00)</option>
+                        <option value="maniana">Mañana (8:00 - 12:30)</option>
+                        <option value="tarde">Tarde (12:30 - 19:00)</option>
+                      </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Confirmar Horarios
+                  </button>
+                </form>
+              </div>
+          
+</div>
