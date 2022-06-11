@@ -61,7 +61,7 @@
                         Martes <input type="checkbox" (click) = "dias('martes')">
                       </li>
                       <li>
-                        Miercoles <input type="checkbox" (click) = "dias('mercoles')">
+                        Miercoles <input type="checkbox" (click) = "dias('miercoles')">
                       </li>
                       <li>
                         Jueves <input type="checkbox" (click) = "dias('jueves')">
@@ -76,14 +76,14 @@
                   </div>
                   <div class="col-6">
                     <label for="dni" class="form-label">Horario disponible</label>
-                      <select class="form-control" formControlName="horario">
+                      <select class="form-control" id="select">
                         <option value="">Seleccione uno</option>
                         <option value="todo">Jornada completa (8:00 - 19:00)</option>
                         <option value="maniana">Mañana (8:00 - 12:30)</option>
                         <option value="tarde">Tarde (12:30 - 19:00)</option>
                       </select>
                   </div>
-                  <button type="submit" class="btn btn-primary btn-block">
+                  <button type="button" (click) = "enviar()" class="btn btn-primary btn-block">
                     Confirmar Horarios
                   </button>
                 </form>
