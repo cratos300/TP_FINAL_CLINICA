@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ElegirEspecialistaComponent implements OnInit {
    @Input() usuarios:any;
+   @Output() obj:  EventEmitter<any> = new EventEmitter<any>();
+   
   constructor() 
   {
     
@@ -16,4 +18,8 @@ export class ElegirEspecialistaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  accion(data:any)
+  {
+    this.obj.emit(data);
+  }
 }

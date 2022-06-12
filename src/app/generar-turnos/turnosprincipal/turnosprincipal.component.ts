@@ -13,6 +13,7 @@ export class TurnosprincipalComponent implements OnInit {
   boolhorarios:boolean = false;
   especialidad:any;
   usuarios:any = [];
+  objbuscar:any;
   constructor(private cargarhora:CargarhoraespecialistaService) { }
 
   ngOnInit(): void {
@@ -23,7 +24,7 @@ export class TurnosprincipalComponent implements OnInit {
     this.boolespecialista = true;
     this.especialidad = data;
     this.cargarhora.getAll().valueChanges().subscribe((e:any)=>{
-      
+      this.usuarios = [];
       for(let i=0; i<e.length;i++)
       {
         console.log(e[i]);
@@ -34,6 +35,13 @@ export class TurnosprincipalComponent implements OnInit {
         }
       }
     })
+  }
+  objectomodificar(data:any)
+  {
+    this.objbuscar = data;
+    this.boolespecialidad = false;
+    this.boolespecialista = false;
+    this.boolhorarios = true;
   }
 
 }

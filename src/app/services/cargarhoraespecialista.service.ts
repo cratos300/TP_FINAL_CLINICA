@@ -27,8 +27,13 @@ export class CargarhoraespecialistaService {
   update(id: string, data: any): Promise<void> {
     this.MensajesRef = this.db.collection(this.dbPath);
     return this.MensajesRef.doc(id).update({
-      email:data.email,
-      confirmar: data.confirmar
+      dias: data.dias,
+      email: data.email,
+      especialidad: data.especialidad,
+      hora: data.hora,
+      imagen: data.imagen,
+      nombre: data.nombre
+
     });
   }
 

@@ -1,1 +1,10 @@
-<p>elegir-horarios works!</p>
+<div class="d">
+    <p>{{objectoActual.nombre}}</p>
+    <div *ngFor="let item of arraytercero">
+        <button class="btn btn-danger"> {{item.dia}} </button>
+        <div *ngFor="let item of item.horario">
+            <button id="bb" *ngIf="item.estado == 'habilitado'"  class="btn btn-primary">{{item.hora}}:{{item.minutos}} </button>
+            <!-- <button *ngIf="item.estado == 'habilitado'"  class="btn btn-primary">{{item.hora}}:{{item.minutos}} </button> -->
+        </div>
+    </div>
+</div>

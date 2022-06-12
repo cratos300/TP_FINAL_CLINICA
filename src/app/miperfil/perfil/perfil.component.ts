@@ -52,6 +52,7 @@ export class PerfilComponent implements OnInit {
 
   enviar()
   {
+    let esperar;
     let data = (<HTMLInputElement>document.getElementById("select")).value;
     this.unespecialista = new Diahoraespecialista();
     this.arrayhoraaa[0] = null;
@@ -91,26 +92,56 @@ export class PerfilComponent implements OnInit {
     this.unespecialista.especialidad = this.datoUsuario.especialidades[0];
     this.unespecialista.imagen = this.datoUsuario.imagen;
     this.unespecialista.nombre = this.datoUsuario.nombre;
+  
     if(data == 'maniana')
     {
-      this.unespecialista.hora = {'horamin':'8','horamax':'12:30'}
+      this.unespecialista.hora = {'horamin':'8','horamax':'12'}
     }
     else if(data == 'tarde')
     {
-      this.unespecialista.hora = {'horamin':'12:30','horamax':'19:00'}
+      this.unespecialista.hora = {'horamin':'12','horamax':'19'}
     }
     else 
     {
-      this.unespecialista.hora = {'horamin':'8','horamax':'19:00'}
+      this.unespecialista.hora = {'horamin':'8','horamax':'19'}
     }
-    this.es.create(this.unespecialista).then((e:any)=>{
-      console.log("Hora y dias cargado correctamente!!");
+    this.recorrer(this.unespecialista).then((e:any)=>{
+      if(e==null)
+      {
+        this.es.create(this.unespecialista).then((e:any)=>{
+        console.log("Hora y dias cargado correctamente!!");
       
+       })
+      }
+      else
+      {
+        this.es.update(e,this.unespecialista).then(e=>{
+          alert("Modificado correctamente!!")
+        })
+      }
     })
+    
     
     
   }
   ngOnInit(): void {
+  }
+  recorrer(data:any)
+  {
+    let encontrado:any = null;
+    return new Promise((resolve,rejected)=>{
+      var clientesSubscription = this.es.getAll().get().subscribe((q) =>{q.forEach((doc)=>{
+
+     
+          if(doc.data().email == data.email && doc.data().especialidad == data.especialidad)
+              {
+                encontrado = doc.id;
+              }    
+          })
+          resolve(encontrado);
+           })
+    })
+    
   }
   dias(data:any)
   {
