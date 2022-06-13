@@ -1,3 +1,5 @@
+import { Nuevo } from "./nuevo";
+
 export class Horario {
-    hora:any;
+    hora:Nuevo[] = [];
 }

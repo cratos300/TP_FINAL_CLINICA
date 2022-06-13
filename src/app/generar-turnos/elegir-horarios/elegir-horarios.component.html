@@ -2,9 +2,10 @@
     <p>{{objectoActual.nombre}}</p>
     <div *ngFor="let item of arraytercero">
         <button class="btn btn-danger"> {{item.dia}} </button>
-        <div *ngFor="let item of item.horario">
-            <button id="bb" *ngIf="item.estado == 'habilitado'"  class="btn btn-primary">{{item.hora}}:{{item.minutos}} </button>
-            <!-- <button *ngIf="item.estado == 'habilitado'"  class="btn btn-primary">{{item.hora}}:{{item.minutos}} </button> -->
+        <div *ngFor="let ese of item.horario">
+            {{item.estado}}
+            <!-- <button id="bb" (click) = "quehago(item.dia,ese.hora,ese.minutos)" *ngIf="ese.estado == 'habilitado'"  class="btn btn-primary">{{ese.hora}}:{{ese.minutos}} </button> -->
+            <button id="bb" (click) = "quehago(item.dia,ese.hora,ese.minutos)" *ngIf="ese.estado == 'habilitado'"  class="btn btn-primary">{{ese.hora}}:{{ese.minutos}} </button>
         </div>
     </div>
 </div>
