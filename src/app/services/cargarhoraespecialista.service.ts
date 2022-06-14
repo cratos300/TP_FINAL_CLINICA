@@ -29,7 +29,6 @@ export class CargarhoraespecialistaService {
     return this.MensajesRef.doc(id).update({
       dias: data.dias,
       email: data.email,
-      especialidad: data.especialidad,
       hora: data.hora,
       imagen: data.imagen,
       nombre: data.nombre

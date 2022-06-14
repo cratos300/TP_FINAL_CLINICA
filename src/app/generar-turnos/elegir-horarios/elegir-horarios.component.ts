@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Fecha } from 'src/app/clases/fecha';
 import { Horario } from 'src/app/clases/horario';
 import { Nuevo } from 'src/app/clases/nuevo';
+import { ObjectoCompleto } from 'src/app/clases/objecto-completo';
+import { HorariosturnosService } from 'src/app/services/horariosturnos.service';
 
 @Component({
   selector: 'app-elegir-horarios',
@@ -10,69 +12,124 @@ import { Nuevo } from 'src/app/clases/nuevo';
 })
 export class ElegirHorariosComponent implements OnInit {
   @Input() objectoActual:any;
+  objectoguardar!:ObjectoCompleto
   ahora:any = new Date();
   arrayHorarios:any = [];
   arraytercero:any = [];
   hs:any;
   dat:any;
-  constructor() {
+  desub:any;
+  constructor(private hsturnos:HorariosturnosService) {
    
-    
    }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      console.log(this.arraytercero[0].horario);
-    }, 2000);
-    this.calculartiempo(this.ahora,this.objectoActual.dias,this.objectoActual.hora.horamin,this.objectoActual.hora.horamax)
+    this.calculartiempo(this.ahora,this.objectoActual.dias,this.objectoActual.hora.horamin,this.objectoActual.hora.horamax).then(ese=>{
+      this.desub  = this.hsturnos.getAll().valueChanges().subscribe(e=>{
+        this.desub.unsubscribe();
+        
+        this.objectoguardar = new ObjectoCompleto(this.objectoActual.email,this.objectoActual.especialidad,ese);
+        if(e.length == 0)
+        {
+           this.hsturnos.create(this.objectoguardar).then((e:any)=>{
+           })
+        }
+        else
+        {
+          console.log(e)
+          this.hsturnos.getAll().valueChanges().subscribe(e=>{
+     
+           
+            
+            for(let i = 0; i<e.length;i++)
+            {
+     
+
+              if(e[i].email == this.objectoguardar.email && e[i].especialidad == this.objectoguardar.especialidad)
+              { 
+                for(let j = 0; j<this.objectoguardar.fechas.length;j++)
+                {  
+                  
+               
+                  for(let k = 1; k<e[i].fechas.length;k++)
+                  {
+                    if(this.objectoguardar.fechas[j].dia == e[i].fechas[k].dia)
+                    {
+                      for(let y = 0; y<this.objectoguardar.fechas[j].horario.length;y++)
+                      {
+                        for(let z=0; z<e[i].fechas[k].horario.length;z++)
+                        {
+                          if(this.objectoguardar.fechas[j].horario[y].hora == e[i].fechas[k].horario[z].hora && this.objectoguardar.fechas[j].horario[y].minutos == e[i].fechas[k].horario[z].minutos)
+                          {
+                            console.log(e[i].fechas[k].horario[z].estado);
+                            
+                              this.objectoguardar.fechas[j].horario[y].estado = e[i].fechas[k].horario[z].estado;
+                            
+                          }
+                        }
+                      }
+                      // alert("es igual");
+                      // this.desub.unsubscribe();
+                    }
+                  }
+                  
+                }
+              }
+            }
+            
+           })
+        }
+        
+      })
+    })
   }
 
   calculartiempo(data:any,arradia:any,minimo:number,maximo:number)
   {
-    
-  
-    for(let i = 0; i< 14 ;i++)
-    {
-      
-      let ti = new Fecha();
-      this.ahora.setHours(minimo)
-      this.ahora.setMinutes(0);
-      this.ahora.setSeconds(0);
-      this.arrayHorarios = new Array();
-      if(this.ahora.getDay() == arradia[0] || this.ahora.getDay() == arradia[1] ||this.ahora.getDay() == arradia[2]||this.ahora.getDay() == arradia[3]||this.ahora.getDay() == arradia[4]||this.ahora.getDay() == arradia[5]||this.ahora.getDay() == arradia[6])
+    return new Promise((resolve,reject)=>{
+
+      for(let i = 0; i< 14 ;i++)
       {
-        while(data.getHours() < maximo)
-       {
-         this.hs = new Horario();
-
-         this.dat = new Nuevo();  
-         this.dat.hora = data.getHours();
-         this.dat.minutos = data.getMinutes();
-         this.dat.estado = 'habilitado';
         
-         if(this.dat.minutos == 0)
+        let ti = new Fecha();
+        this.ahora.setHours(minimo)
+        this.ahora.setMinutes(0);
+        this.ahora.setSeconds(0);
+        this.arrayHorarios = new Array();
+        if(this.ahora.getDay() == arradia[0] || this.ahora.getDay() == arradia[1] ||this.ahora.getDay() == arradia[2]||this.ahora.getDay() == arradia[3]||this.ahora.getDay() == arradia[4]||this.ahora.getDay() == arradia[5]||this.ahora.getDay() == arradia[6])
+        {
+          while(data.getHours() < maximo)
          {
-          this.dat.minutos = "00";
-
-         }
+           this.hs = new Horario();
   
-         this.hs = this.dat;
-         
-         
-         this.arrayHorarios.push(this.hs)
+           this.dat = new Nuevo();  
+           this.dat.hora = data.getHours();
+           this.dat.minutos = data.getMinutes();
+           this.dat.estado = 'habilitado';
+          
+           if(this.dat.minutos == 0)
+           {
+            this.dat.minutos = "00";
   
-        this.ahora.setMinutes(this.ahora.getMinutes()+30);
-      }
-      ti.dia = data.toLocaleDateString()
-      ti.horario = this.arrayHorarios;
-      console.log(ti);
-      this.arraytercero.push(ti);
-      }
-      data.setDate(data.getDate()+1);
-      
-      
+           }
     
-    }
+           this.hs = this.dat;
+           
+           
+           this.arrayHorarios.push(this.hs)
+    
+          this.ahora.setMinutes(this.ahora.getMinutes()+30);
+        }
+        ti.dia = data.toLocaleDateString()
+        ti.horario = this.arrayHorarios;
+        this.arraytercero.push(ti);
+        }
+        data.setDate(data.getDate()+1);
+      }
+      resolve(this.arraytercero);
+
+    })
+  
 
 }
 quehago(dia:any,hora:any,minutos:any)
@@ -88,8 +145,7 @@ quehago(dia:any,hora:any,minutos:any)
         
         if(this.arraytercero[i].horario[j].hora == hora && this.arraytercero[i].horario[j].minutos == minutos)
         {
-          alert("si")
-          this.arraytercero[i].horario[j].estado = 'falso';
+          this.arraytercero[i].horario[j].estado = 'deshabilitado';
         }
       }
     }

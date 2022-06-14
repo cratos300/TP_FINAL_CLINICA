@@ -82,7 +82,12 @@
                         <option value="maniana">Mañana (8:00 - 12:00)</option>
                         <option value="tarde">Tarde (12:00 - 19:00)</option>
                       </select>
+                      <label for="dni" class="form-label">Horario disponible</label>
+                      <select class="form-control" id="select2">
+                        <option *ngFor="let item of datoUsuario.especialidades" [value]="item">{{item}}</option>
+                      </select>
                   </div>
+                  
                   <button type="button" (click) = "enviar()" class="btn btn-primary btn-block">
                     Confirmar Horarios
                   </button>

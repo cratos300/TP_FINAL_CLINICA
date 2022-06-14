@@ -26,9 +26,7 @@ export class TurnosprincipalComponent implements OnInit {
     this.cargarhora.getAll().valueChanges().subscribe((e:any)=>{
       this.usuarios = [];
       for(let i=0; i<e.length;i++)
-      {
-        console.log(e[i]);
-        
+      {     
         if(e[i].especialidad == this.especialidad)
         {
           this.usuarios.push(e[i]);

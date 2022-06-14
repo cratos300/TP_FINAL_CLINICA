@@ -89,7 +89,7 @@ export class PerfilComponent implements OnInit {
     console.log(this.arrayhoraaa);
     this.unespecialista.dias = this.arrayhoraaa;
     this.unespecialista.email = this.datoUsuario.email;
-    this.unespecialista.especialidad = this.datoUsuario.especialidades[0];
+    this.unespecialista.especialidad = (<HTMLInputElement>document.getElementById('select2')).value;
     this.unespecialista.imagen = this.datoUsuario.imagen;
     this.unespecialista.nombre = this.datoUsuario.nombre;
   
@@ -120,7 +120,7 @@ export class PerfilComponent implements OnInit {
         })
       }
     })
-    
+    // let data = (<HTMLInputElement>document.getElementById('agregar')).value;
     
     
   }
@@ -128,6 +128,7 @@ export class PerfilComponent implements OnInit {
   }
   recorrer(data:any)
   {
+    alert(data.especialidad)
     let encontrado:any = null;
     return new Promise((resolve,rejected)=>{
       var clientesSubscription = this.es.getAll().get().subscribe((q) =>{q.forEach((doc)=>{
