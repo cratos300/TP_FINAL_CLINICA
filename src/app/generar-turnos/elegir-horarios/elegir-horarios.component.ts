@@ -12,6 +12,7 @@ import { HorariosturnosService } from 'src/app/services/horariosturnos.service';
 })
 export class ElegirHorariosComponent implements OnInit {
   @Input() objectoActual:any;
+  cargando:boolean = true;
   objectoguardar!:ObjectoCompleto
   ahora:any = new Date();
   arrayHorarios:any = [];
@@ -21,6 +22,9 @@ export class ElegirHorariosComponent implements OnInit {
   desub:any;
   constructor(private hsturnos:HorariosturnosService) {
    
+    setTimeout(() => {
+      this.cargando = false;
+    }, 1200);
    }
 
   ngOnInit(): void {
@@ -36,25 +40,24 @@ export class ElegirHorariosComponent implements OnInit {
         }
         else
         {
-          console.log(e)
           this.hsturnos.getAll().valueChanges().subscribe(e=>{
-     
-           
-            
             for(let i = 0; i<e.length;i++)
             {
-     
 
               if(e[i].email == this.objectoguardar.email && e[i].especialidad == this.objectoguardar.especialidad)
               { 
                 for(let j = 0; j<this.objectoguardar.fechas.length;j++)
                 {  
-                  
                
-                  for(let k = 1; k<e[i].fechas.length;k++)
+                  for(let k = 0; k<e[i].fechas.length;k++)
                   {
+                    console.log(e);
+                    
+                    
+                    
                     if(this.objectoguardar.fechas[j].dia == e[i].fechas[k].dia)
                     {
+                
                       for(let y = 0; y<this.objectoguardar.fechas[j].horario.length;y++)
                       {
                         for(let z=0; z<e[i].fechas[k].horario.length;z++)
@@ -150,5 +153,36 @@ quehago(dia:any,hora:any,minutos:any)
       }
     }
   }
+  this.objectoguardar = new ObjectoCompleto(this.objectoActual.email,this.objectoActual.especialidad,this.arraytercero);
+  this.buscar(this.objectoActual.email,this.objectoActual.especialidad).then((e:any)=>{
+    if(e == null)
+    {
+      this.hsturnos.create(this.objectoguardar);
+    }
+    else
+    {
+       this.hsturnos.getAll().update(e,this.objectoguardar).then(e=>{
+       })
+    }
+    
+  })
+}
+buscar(email:any,especialidad:any)
+{
+  
+  
+  return new Promise((resolve,reject)=>{
+    this.hsturnos.getAll().query.get().then(e=>{
+     e.forEach(e=>{
+        if(email == e.val().email && especialidad == e.val().especialidad)
+        {
+          return resolve(e.key);
+        }
+      }
+      );
+      return resolve(null);
+    }
+    )
+})
 }
 }
