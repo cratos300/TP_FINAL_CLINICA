@@ -3,6 +3,9 @@ import { Fecha } from 'src/app/clases/fecha';
 import { Horario } from 'src/app/clases/horario';
 import { Nuevo } from 'src/app/clases/nuevo';
 import { ObjectoCompleto } from 'src/app/clases/objecto-completo';
+import { Usuarioespecialista } from 'src/app/clases/usuarioespecialista';
+import { AgregarestadoturnoService } from 'src/app/services/agregarestadoturno.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { HorariosturnosService } from 'src/app/services/horariosturnos.service';
 
 @Component({
@@ -20,8 +23,11 @@ export class ElegirHorariosComponent implements OnInit {
   hs:any;
   dat:any;
   desub:any;
-  constructor(private hsturnos:HorariosturnosService) {
-   
+  unobj:Usuarioespecialista;
+  clickeado:any;
+  datin:any;
+  constructor(private hsturnos:HorariosturnosService,private mixto:AgregarestadoturnoService,private auth:AuthService) {
+    this.unobj = new Usuarioespecialista();
     setTimeout(() => {
       this.cargando = false;
     }, 1200);
@@ -143,12 +149,12 @@ quehago(dia:any,hora:any,minutos:any)
     if(this.arraytercero[i].dia == dia)
     {
       for(let j = 0; j<this.arraytercero[i].horario.length;j++)
-      {
-        
-        
+      {  
         if(this.arraytercero[i].horario[j].hora == hora && this.arraytercero[i].horario[j].minutos == minutos)
         {
           this.arraytercero[i].horario[j].estado = 'deshabilitado';
+          let data = {'dia':dia,'hora':this.arraytercero[i].horario[j].hora,'minutos':this.arraytercero[i].horario[j].minutos}
+          this.datin = data;
         }
       }
     }
@@ -162,6 +168,14 @@ quehago(dia:any,hora:any,minutos:any)
     else
     {
        this.hsturnos.getAll().update(e,this.objectoguardar).then(e=>{
+         this.unobj.correoEspecialista = this.objectoguardar.email;
+         this.unobj.correoPaciente = this.auth.correologeado;
+         this.unobj.estado = "pendiente";
+         this.unobj.especialidad = this.objectoActual.especialidad;
+         this.unobj.dia = this.datin.dia;
+         this.unobj.hora = this.datin.hora;
+         this.unobj.minutos = this.datin.minutos;
+        this.mixto.create(this.unobj);
        })
     }
     
@@ -169,8 +183,6 @@ quehago(dia:any,hora:any,minutos:any)
 }
 buscar(email:any,especialidad:any)
 {
-  
-  
   return new Promise((resolve,reject)=>{
     this.hsturnos.getAll().query.get().then(e=>{
      e.forEach(e=>{

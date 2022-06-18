@@ -19,6 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import { GuardauthGuard } from './guards/guardauth.guard';
 import { CambiarColorDirective } from './directivas/cambiar-color.directive';
+import { connectFirestoreEmulator, getFirestore, provideFirestore } from "@angular/fire/firestore";
+
 
 
 
