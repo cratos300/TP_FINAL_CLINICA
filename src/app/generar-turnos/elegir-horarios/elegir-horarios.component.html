@@ -7,7 +7,7 @@
     <div *ngFor="let item of arraytercero">
             <button class="btn btn-danger"> {{item.dia}} </button>
         <div *ngFor="let ese of item.horario" class="efe">
-            {{item.estado}}
+          
             <!-- <button id="bb" (click) = "quehago(item.dia,ese.hora,ese.minutos)" *ngIf="ese.estado == 'habilitado'"  class="btn btn-primary">{{ese.hora}}:{{ese.minutos}} </button> -->
             <button id="bb" (click) = "quehago(item.dia,ese.hora,ese.minutos)" *ngIf="ese.estado == 'habilitado'"  class="btn btn-primary">{{ese.hora}}:{{ese.minutos}} </button>
         </div>

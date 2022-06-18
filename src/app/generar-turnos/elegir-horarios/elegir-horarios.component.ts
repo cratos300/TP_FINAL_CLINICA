@@ -56,11 +56,7 @@ export class ElegirHorariosComponent implements OnInit {
                 {  
                
                   for(let k = 0; k<e[i].fechas.length;k++)
-                  {
-                    console.log(e);
-                    
-                    
-                    
+                  {        
                     if(this.objectoguardar.fechas[j].dia == e[i].fechas[k].dia)
                     {
                 
@@ -69,9 +65,7 @@ export class ElegirHorariosComponent implements OnInit {
                         for(let z=0; z<e[i].fechas[k].horario.length;z++)
                         {
                           if(this.objectoguardar.fechas[j].horario[y].hora == e[i].fechas[k].horario[z].hora && this.objectoguardar.fechas[j].horario[y].minutos == e[i].fechas[k].horario[z].minutos)
-                          {
-                            console.log(e[i].fechas[k].horario[z].estado);
-                            
+                          {   
                               this.objectoguardar.fechas[j].horario[y].estado = e[i].fechas[k].horario[z].estado;
                             
                           }
@@ -145,7 +139,6 @@ quehago(dia:any,hora:any,minutos:any)
 {
   for(let i = 0; i<this.arraytercero.length;i++)
   {
-    
     if(this.arraytercero[i].dia == dia)
     {
       for(let j = 0; j<this.arraytercero[i].horario.length;j++)
@@ -161,9 +154,23 @@ quehago(dia:any,hora:any,minutos:any)
   }
   this.objectoguardar = new ObjectoCompleto(this.objectoActual.email,this.objectoActual.especialidad,this.arraytercero);
   this.buscar(this.objectoActual.email,this.objectoActual.especialidad).then((e:any)=>{
+    
+    
     if(e == null)
     {
       this.hsturnos.create(this.objectoguardar);
+      this.buscar(this.objectoActual.email,this.objectoActual.especialidad).then((e:any)=>{
+        this.hsturnos.getAll().update(e,this.objectoguardar).then(e=>{
+          this.unobj.correoEspecialista = this.objectoguardar.email;
+          this.unobj.correoPaciente = this.auth.correologeado;
+          this.unobj.estado = "pendiente";
+          this.unobj.especialidad = this.objectoActual.especialidad;
+          this.unobj.dia = this.datin.dia;
+          this.unobj.hora = this.datin.hora;
+          this.unobj.minutos = this.datin.minutos;
+         this.mixto.create(this.unobj);
+        })
+      })
     }
     else
     {
@@ -186,12 +193,14 @@ buscar(email:any,especialidad:any)
   return new Promise((resolve,reject)=>{
     this.hsturnos.getAll().query.get().then(e=>{
      e.forEach(e=>{
+      console.log(e.val().email);
+      
         if(email == e.val().email && especialidad == e.val().especialidad)
         {
           return resolve(e.key);
         }
       }
-      );
+      )
       return resolve(null);
     }
     )
