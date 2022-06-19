@@ -1,12 +1,12 @@
 <div >
             <div class="row container py-4" *ngIf="cargo && auth.paciente == false">
-                <div class="col-md-6">
+                <div class="col-md-6" id="cuadrado">
                   <div class="">
                     
                     <img [src]="datoUsuario.imagen" alt="">
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" id = "cua">
                   <div class="h-100 p-5 bg-light border rounded-3">
                     <h1>DATOS USUARIO</h1>
                     <span>Nombre: {{datoUsuario.nombre}} </span>

@@ -19,3 +19,15 @@ button
     border-radius: 10px;
     font-size: 20px;
 }
+#cuadrado
+{
+    display: inline-block;
+    min-width: 100%;
+    min-height: 200px;
+    background: #aaa;
+    animation-name: mianimacion;
+    animation-duration: 3s;
+    position:relative;
+    animation-direction: reverse;
+    animation-timing-function: linear;
+}

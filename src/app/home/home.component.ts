@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { RegistrarUsuariosService } from '../services/registrar-usuarios.service';
 
@@ -9,7 +10,7 @@ import { RegistrarUsuariosService } from '../services/registrar-usuarios.service
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private us:RegistrarUsuariosService,public auth:AuthService) 
+  constructor(private us:RegistrarUsuariosService,public auth:AuthService,private router:Router) 
   {  
   }
 
