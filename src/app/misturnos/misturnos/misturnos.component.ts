@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { iif } from 'rxjs';
 import { AgregarestadoturnoService } from 'src/app/services/agregarestadoturno.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { HorariosturnosService } from 'src/app/services/horariosturnos.service';
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class MisturnosComponent implements OnInit {
 
+  b:any;
   list:any;
   resenia:boolean = false;
   reseniaActual:any;
@@ -19,12 +21,42 @@ export class MisturnosComponent implements OnInit {
   {
     this.agregarestadoturno.getAll().valueChanges().subscribe(e=>{
       this.list = e;
-      console.log(this.list);
       
     })
   }
 
   ngOnInit(): void {
+  }
+  finalizado(data:any)
+  {
+    Swal.fire({
+      title: 'Comentario Especialista',
+      html: `<input type="text" id="comentario" class="swal2-input" placeholder="Comentario">
+      <input type="text" id="diagnostico" class="swal2-input" placeholder="Diagnostico">`,
+      confirmButtonText: 'Enviar',
+      focusConfirm: false,
+      preConfirm: () => {
+        let comentario!:any;
+        let diagnostico!:any;
+        comentario = (<HTMLInputElement>Swal.getPopup()!.querySelector('#comentario')).value;
+        diagnostico = (<HTMLInputElement>Swal.getPopup()!.querySelector('#diagnostico')).value;
+        if (!comentario || !diagnostico) {
+          Swal.showValidationMessage(`Cargue Comentario y diagnostico!`)
+        }
+        return { comentario: comentario, diagnostico: diagnostico }
+      }
+    }).then((result:any)=>{
+
+
+      
+      if(result.isConfirmed)
+      {
+        data.comentarioespecialista = result.value.comentario;
+        data.diagnostico = result.value.diagnostico;
+        data.estado = "finalizado";
+        this.buscar(data);
+      }
+    })
   }
   ejecutarAccion(accion:any,data:any)
   {
@@ -33,6 +65,7 @@ export class MisturnosComponent implements OnInit {
       data.estado = 'aceptado';
     }
   }
+  
   cancelarTurno(quiencancelo:any,data:any)
   {  
     Swal.fire({
@@ -103,9 +136,6 @@ export class MisturnosComponent implements OnInit {
             if(arraytercero[i].fechas[z].horario[j].hora == hora && arraytercero[i].fechas[z].horario[j].minutos == minutos)
             {
               arraytercero[i].fechas[z].horario[j].estado= 'habilitado';
-              console.log("ROMPIO");
-              
-              
               this.hsturnos.getAll().query.get().then(e=>{
                 e.forEach((e:any)=>{
                    if(arraytercero[i].email == e.val().email && arraytercero[i].especialidad == e.val().especialidad)
@@ -126,4 +156,38 @@ export class MisturnosComponent implements OnInit {
     
   
   }
+  hacerBusqueda()
+  {
+    let arrnueva = [];
+    let cantidadletras = this.b.length;
+    
+    var especialista = this.list.filter((e:any)=>{
+
+      return e.especialidad == this.b || e.correoEspecialista == this.b;
+
+      
+    })
+    if(especialista.length > 0 )
+    {
+      this.list = especialista;
+    }
+  }
+  limpiar()
+  {
+    this.list = [];
+    this.agregarestadoturno.getAll().get().subscribe(e=>{e.forEach(e=>{
+      this.list.push(e.data());
+    })})
+  }
+     // setTimeout(() => {    
+  
+
+        
+    //     Object.keys(data[0]).forEach((entry,index)=>{
+    //       if(entry != "hora" && entry != "comentarioadmin" && entry != "correoEspecialista" && entry != "comentarioespecialista" && entry != "correoPaciente" && entry != "diagnostico" && entry != "dia" && entry != "comentariopaciente" && entry != "especialidad")
+    //         console.log(data[0][entry]);
+          
+    //     })
+      
+    // }, 2000);
 }

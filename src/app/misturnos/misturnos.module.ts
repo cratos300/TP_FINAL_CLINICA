@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MisturnosRoutingModule } from './misturnos-routing.module';
 import { MisturnosComponent } from './misturnos/misturnos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { MisturnosComponent } from './misturnos/misturnos.component';
   ],
   imports: [
     CommonModule,
-    MisturnosRoutingModule
+    MisturnosRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class MisturnosModule { }
