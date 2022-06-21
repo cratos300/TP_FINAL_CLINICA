@@ -69,6 +69,29 @@
   </table>
 </div>
 
+<table class="table text-center" *ngIf="historiaclinicaa != null">
+  <thead>
+    <tr>
+      <th scope="col">Altura</th>
+      <th scope="col">Peso</th>
+      <th scope="col">Presion</th>
+      <th scope="col">Temperatura</th>
+      <th scope="col">Dia</th>
+      <th scope="col">Hora</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of historiaclinicaa " >
+        <td *ngIf="item.correopaciente == auth.correologeado">{{item.altura}} </td>
+        <td *ngIf="item.correopaciente == auth.correologeado">{{item.peso}} </td>
+        <td *ngIf="item.correopaciente == auth.correologeado">{{item.presion}} </td>
+        <td *ngIf="item.correopaciente == auth.correologeado">{{item.temepratura}} </td>
+        <td *ngIf="item.correopaciente == auth.correologeado">{{item.dia}} </td>
+        <td *ngIf="item.correopaciente == auth.correologeado">{{item.hora}}:{{item.minutos}} </td>    
+    </tr>
+  </tbody>
+</table>
+
       </div>
 
 
@@ -107,7 +130,7 @@
                           <button class="btn btn-primary" *ngIf="item.estado == 'aceptado'" (click) = "finalizado(item)">FINALIZAR</button>
                           <button class="btn btn-primary" *ngIf="item.estado == 'realizado'">COMPLETAR ENCUESTA</button>
                           <button class="btn btn-primary" *ngIf="item.estado == 'realizado'">CALIFICAR TURNO</button>
-                          <button (click) = "verresenia(item)" class="btn btn-primary" *ngIf="item.comentariopaciente != 'No hay comentario' || item.comentarioespecialista != 'No hay comentario' || item.comentarioadmin != 'No hay comentario' ">Ver Reseña</button>          
+                          <button (click) = "verresenia(item)" class="btn btn-primary" *ngIf="item.comentariopaciente != 'No hay comentario' || item.comentarioespecialista != 'No hay comentario' || item.comentarioadmin != 'No hay comentario' || item.diagnostico != 'No hay comentario' ">Ver Reseña</button>          
                         </div>
                     </tr>
                   </tbody>

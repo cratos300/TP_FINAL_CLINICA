@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { iif } from 'rxjs';
+import { Historiaclinica } from 'src/app/clases/historiaclinica';
 import { AgregarestadoturnoService } from 'src/app/services/agregarestadoturno.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { HistoriaClinicaService } from 'src/app/services/historia-clinica.service';
 import { HorariosturnosService } from 'src/app/services/horariosturnos.service';
 import Swal from 'sweetalert2';
 
@@ -12,16 +14,20 @@ import Swal from 'sweetalert2';
 })
 export class MisturnosComponent implements OnInit {
 
+  historiaclinicaa:any = [];
   b:any;
   list:any;
   resenia:boolean = false;
   reseniaActual:any;
 
-  constructor(public auth:AuthService,private agregarestadoturno:AgregarestadoturnoService,private hsturnos:HorariosturnosService) 
+  constructor(public auth:AuthService,private agregarestadoturno:AgregarestadoturnoService,private hsturnos:HorariosturnosService,private historiaclinica:HistoriaClinicaService) 
   {
     this.agregarestadoturno.getAll().valueChanges().subscribe(e=>{
       this.list = e;
       
+    })
+    this.historiaclinica.getAll().valueChanges().subscribe(e=>{
+      this.historiaclinicaa = e;
     })
   }
 
@@ -29,6 +35,8 @@ export class MisturnosComponent implements OnInit {
   }
   finalizado(data:any)
   {
+    console.log(data);
+    
     Swal.fire({
       title: 'Comentario Especialista',
       html: `<input type="text" id="comentario" class="swal2-input" placeholder="Comentario">
@@ -138,8 +146,21 @@ export class MisturnosComponent implements OnInit {
           
           if(result.isConfirmed)
           {
-            console.log(result);
-            
+            let historiaClinica = new Historiaclinica();
+            historiaClinica.altura = result.value.altura;
+            historiaClinica.otros = result.value.otros;
+            historiaClinica.peso = result.value.peso;
+            historiaClinica.temepratura = result.value.temperatura;
+            historiaClinica.presion = result.value.presion;
+            historiaClinica.dia = data.dia;
+            historiaClinica.hora = data.hora;
+            historiaClinica.minutos = data.minutos;
+            historiaClinica.correoespecialista = data.correoEspecialista;
+            historiaClinica.correopaciente = data.correoPaciente;
+            historiaClinica.especialidad = data.especialidad;
+            this.historiaclinica.create(historiaClinica).then((e:any)=>{
+              alert("HISTORIA CLINICA CARGADA")
+            })
           }
         })
       }
