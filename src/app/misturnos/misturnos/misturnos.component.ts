@@ -55,6 +55,93 @@ export class MisturnosComponent implements OnInit {
         data.diagnostico = result.value.diagnostico;
         data.estado = "finalizado";
         this.buscar(data);
+
+        Swal.fire({
+          title: 'Historia Clinica',
+          html: `<input type="text" id="altura" class="swal2-input" placeholder="Altura (En metros)">
+          <input type="text" id="peso" class="swal2-input" placeholder="Peso (En kilos)">,
+          <input type="text" id="temperatura" class="swal2-input" placeholder="Temperatura (En ~Grado Celcius)">
+          <input type="text" id="presion" class="swal2-input" placeholder="Presión"><br>
+          <span>Otros<span>
+          <div class="row">
+          <div class="col-6">
+          <input type="text" id="clave1" class="swal2-input col-6" placeholder="Clave (opcional)">
+          </div>
+          <div class="col-6">
+          <input type="text" id="valor1" class="swal2-input col-6" placeholder="Valor (opcional)">
+          </div>
+  
+          <div class="col-6">
+          <input type="text" id="clave2" class="swal2-input col-6" placeholder="Clave (opcional)">
+          </div>
+          <div class="col-6">
+          <input type="text" id="valor2" class="swal2-input col-6" placeholder="Valor (opcional)">
+          </div>
+  
+          <div class="col-6">
+          <input type="text" id="clave3" class="swal2-input col-6" placeholder="Clave (opcional)">
+          </div>
+          <div class="col-6">
+          <input type="text" id="valor3" class="swal2-input col-6" placeholder="Valor (opcional)">
+          </div>
+          </div>
+          `,
+          confirmButtonText: 'Enviar',
+          focusConfirm: false,
+          preConfirm: () => {
+            let altura!:any;
+            let peso!:any;
+            let temperatura!:any;
+            let presion!:any;
+  
+            let clave1!:any;
+            let valor1!:any;
+            let clave2!:any;
+            let valor2!:any;
+            let clave3!:any;
+            let valor3!:any;
+  
+            let otros:any = [];
+  
+            altura = (<HTMLInputElement>Swal.getPopup()!.querySelector('#altura')).value;
+            peso = (<HTMLInputElement>Swal.getPopup()!.querySelector('#peso')).value;
+            temperatura = (<HTMLInputElement>Swal.getPopup()!.querySelector('#temperatura')).value;
+            presion = (<HTMLInputElement>Swal.getPopup()!.querySelector('#presion')).value;
+  
+            clave1 = (<HTMLInputElement>Swal.getPopup()!.querySelector('#clave1')).value;
+            valor1 = (<HTMLInputElement>Swal.getPopup()!.querySelector('#valor1')).value;
+            clave2 = (<HTMLInputElement>Swal.getPopup()!.querySelector('#clave2')).value;
+            valor2 = (<HTMLInputElement>Swal.getPopup()!.querySelector('#valor2')).value;
+            clave3 = (<HTMLInputElement>Swal.getPopup()!.querySelector('#clave3')).value;
+            valor3 = (<HTMLInputElement>Swal.getPopup()!.querySelector('#valor3')).value;
+  
+            if (!altura || !peso || !temperatura || !presion) {
+              Swal.showValidationMessage(`Cargue historia clinica! (Los parametros obligatorios)`)
+            }
+  
+            if(clave1 && valor1)
+            {
+              otros.push({clave:clave1, valor:valor1});
+            }
+            if(clave2 && valor2)
+            {
+              otros.push({clave:clave2, valor:valor2});
+            }
+            if(clave3 && valor3)
+            {
+              otros.push({clave:clave3, valor:valor3});
+            }
+            return { altura: altura, peso: peso, temperatura:temperatura, presion:presion, otros:otros }
+          }
+        }).then((result:any)=>{
+          console.log(result);
+          
+          if(result.isConfirmed)
+          {
+            console.log(result);
+            
+          }
+        })
       }
     })
   }
@@ -63,6 +150,7 @@ export class MisturnosComponent implements OnInit {
     if(accion == 'aceptar')
     {
       data.estado = 'aceptado';
+      this.buscar(data);
     }
   }
   

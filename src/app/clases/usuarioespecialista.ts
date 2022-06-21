@@ -6,7 +6,7 @@ export class Usuarioespecialista {
     comentariopaciente:any = "No hay comentario";
     comentarioespecialista:any = "No hay comentario";
     comentarioadmin:any = "No hay comentario";
-    diagnostico:any = "";
+    diagnostico:any = "No hay comentario";
     hora:any = "";
     minutos:any = "";
     dia:any = "";
