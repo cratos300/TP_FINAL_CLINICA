@@ -7,7 +7,6 @@
         <table class="table text-center">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
                   <th scope="col">Correo</th>
                   <td scope="col">Especialidades</td>
                   <td scope="col">Estado_Cuenta</td>
@@ -17,8 +16,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of list; let i = index">
-                  <th >{{i}}</th>
+                <tr *ngFor="let item of list | ordenar | estadoMayuscula ">
                   <td>{{item.email}} </td>
                   <td>{{item.especialidades}} </td>
                   <td>{{item.estado}} </td>

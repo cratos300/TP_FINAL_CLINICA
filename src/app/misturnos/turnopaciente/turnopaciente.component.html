@@ -67,28 +67,4 @@
 </table>
 </div>
 
-<div class="d-flex justify-content-center align-items-center">
-<table class="table text-center tt" *ngIf="historiaclinicaa != null">
-<thead>
-<tr>
-  <th scope="col">Altura</th>
-  <th scope="col">Peso</th>
-  <th scope="col">Presion</th>
-  <th scope="col">Temperatura</th>
-  <th scope="col">Dia</th>
-  <th scope="col">Hora</th>
-</tr>
-</thead>
-<tbody>
-<tr *ngFor="let item of historiaclinicaa " >
-    <td *ngIf="item.correopaciente == auth.correologeado">{{item.altura}} </td>
-    <td *ngIf="item.correopaciente == auth.correologeado">{{item.peso}} </td>
-    <td *ngIf="item.correopaciente == auth.correologeado">{{item.presion}} </td>
-    <td *ngIf="item.correopaciente == auth.correologeado">{{item.temepratura}} </td>
-    <td *ngIf="item.correopaciente == auth.correologeado">{{item.dia}} </td>
-    <td *ngIf="item.correopaciente == auth.correologeado">{{item.hora}}:{{item.minutos}} </td>    
-</tr>
-</tbody>
-</table>
-</div>
 

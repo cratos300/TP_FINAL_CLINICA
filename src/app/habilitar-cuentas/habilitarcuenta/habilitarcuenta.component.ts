@@ -8,7 +8,7 @@ import { RegistrarUsuariosService } from 'src/app/services/registrar-usuarios.se
 })
 export class HabilitarcuentaComponent implements OnInit {
 
-  list:any = [];
+  list:any [] = [];
   constructor(private sv:RegistrarUsuariosService)
   {
     this.sv.getAll().valueChanges().subscribe(e=>{

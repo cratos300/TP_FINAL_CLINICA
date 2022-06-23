@@ -20,6 +20,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { GuardauthGuard } from './guards/guardauth.guard';
 import { CambiarColorDirective } from './directivas/cambiar-color.directive';
 import { connectFirestoreEmulator, getFirestore, provideFirestore } from "@angular/fire/firestore";
+import { Ordenar2Pipe } from './pipes/ordenar2.pipe';
+
 
 
 
@@ -36,6 +38,7 @@ import { connectFirestoreEmulator, getFirestore, provideFirestore } from "@angul
      NavbarComponent,
      HomeComponent,
      CambiarColorDirective,
+     Ordenar2Pipe,
 
   ],
   imports: [

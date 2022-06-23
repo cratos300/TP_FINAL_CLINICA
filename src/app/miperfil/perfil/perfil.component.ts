@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Diahoraespecialista } from 'src/app/clases/diahoraespecialista';
 import { AuthService } from 'src/app/services/auth.service';
 import { CargarhoraespecialistaService } from 'src/app/services/cargarhoraespecialista.service';
+import { HistoriaClinicaService } from 'src/app/services/historia-clinica.service';
 import { RegistrarUsuariosService } from 'src/app/services/registrar-usuarios.service';
 
 @Component({
@@ -25,9 +26,9 @@ export class PerfilComponent implements OnInit {
   domingo:any;
   arrayhoraaa:any = [];
   unespecialista!:Diahoraespecialista;
+  historiaclinicaa:any = [];
 
-
-  constructor(public auth:AuthService,private sv:RegistrarUsuariosService,private fb:FormBuilder,private es:CargarhoraespecialistaService) 
+  constructor(public auth:AuthService,private sv:RegistrarUsuariosService,private fb:FormBuilder,private es:CargarhoraespecialistaService,historiaclinica:HistoriaClinicaService) 
   {
     setTimeout(() => {
       this.unseg = true;
@@ -41,6 +42,9 @@ export class PerfilComponent implements OnInit {
         }
 
      })})
+     historiaclinica.getAll().valueChanges().subscribe(e=>{
+      this.historiaclinicaa = e;
+    })
      this.arrayhoraaa[0] = null;
      this.arrayhoraaa[1] = null;
      this.arrayhoraaa[2] = null;

@@ -46,3 +46,7 @@ img
     80%{left: 300px;top:80vh;}
     100%{left: 400px;top:100vh;}
 }
+.tt
+{
+    width: 600px;
+}
