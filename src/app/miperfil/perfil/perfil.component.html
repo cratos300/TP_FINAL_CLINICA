@@ -49,7 +49,23 @@
                   </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
-                  <table class="table text-center tt" *ngIf="historiaclinicaa != null">
+                  <div>
+                    <div class="d-flex justify-content-center align-items-center">
+                     <h2>Historia Clínica</h2>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+
+                      <div class="d-flex tt">
+                        <input class="form-control me-2" type="search" placeholder="Search" value="dasd"  aria-label="Search" [(ngModel)]="b">
+                        <button class="btn btn-outline-success" (click) = "hacerBusqueda()" type="button">Search</button>
+                        <button class="btn btn-outline-warning" type="button" (click) = "limpiar()">Limpiar</button>
+                      </div>
+                      
+                      
+                      </div>
+                      <div id="content" #content>
+                  <table class="table text-center tt borde" *ngIf="historiaclinicaa != null">
+                
                   <thead>
                   <tr>
                     <th scope="col">Altura</th>
@@ -71,6 +87,7 @@
                   </tr>
                   </tbody>
                   </table>
+                </div>
                   </div>
               </div>
               <div class="col-6" *ngIf="auth.especialista">
@@ -117,5 +134,5 @@
                   </button>
                 </form>
               </div>
-          
+          <button (click) = "makePDF()" >CREAR PDF</button>
 </div>

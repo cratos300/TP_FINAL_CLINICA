@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MiperfilRoutingModule } from './miperfil-routing.module';
 import { PerfilComponent } from './perfil/perfil.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     PerfilComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     MiperfilRoutingModule
   ]

@@ -1,14 +1,12 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-div
+#c
 {
-    height: 100vh;
-    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
-p,button
+.tamanio
 {
-    color: white;  
-    padding: auto; 
+    height: 600px;
+    width: 600px;
 }

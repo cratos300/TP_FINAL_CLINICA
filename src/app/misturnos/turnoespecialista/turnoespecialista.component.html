@@ -4,6 +4,16 @@
             <h2>MIS TURNOS</h2>
         </div>
       <div class="table-responsive segundogeneral">
+        <div class="d-flex justify-content-center align-items-center">
+
+          <div class="d-flex tt">
+            <input class="form-control me-2" type="search" placeholder="Search" value="dasd"  aria-label="Search" [(ngModel)]="b">
+            <button class="btn btn-outline-success" (click) = "hacerBusqueda()" type="button">Search</button>
+            <button class="btn btn-outline-warning" type="button" (click) = "limpiar()">Limpiar</button>
+          </div>
+          
+          
+          </div>
         <table class="table text-center">
               <thead>
                 <tr>
@@ -58,3 +68,4 @@
 </tbody>
 </table>
 </div>
+

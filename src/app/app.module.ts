@@ -28,7 +28,6 @@ import { Ordenar2Pipe } from './pipes/ordenar2.pipe';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

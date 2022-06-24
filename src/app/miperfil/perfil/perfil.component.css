@@ -50,3 +50,8 @@ img
 {
     width: 600px;
 }
+
+.borde
+{
+    border: solid 5px red;
+}

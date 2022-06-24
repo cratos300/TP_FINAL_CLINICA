@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import jsPDF from 'jspdf';
 import { Diahoraespecialista } from 'src/app/clases/diahoraespecialista';
 import { AuthService } from 'src/app/services/auth.service';
 import { CargarhoraespecialistaService } from 'src/app/services/cargarhoraespecialista.service';
@@ -13,6 +14,9 @@ import { RegistrarUsuariosService } from 'src/app/services/registrar-usuarios.se
 })
 export class PerfilComponent implements OnInit {
 
+  esa:any = [];
+  @ViewChild('content',{static:false}) el!:ElementRef;
+  objee:any = [{'estado':1,'filtro':2,'teclado':3,'mouse':4,'dia':2,'turno':4}]
   datoUsuario:any
   cargo:boolean = false;
   unseg:boolean = false;
@@ -27,12 +31,10 @@ export class PerfilComponent implements OnInit {
   arrayhoraaa:any = [];
   unespecialista!:Diahoraespecialista;
   historiaclinicaa:any = [];
+  b:any;
 
-  constructor(public auth:AuthService,private sv:RegistrarUsuariosService,private fb:FormBuilder,private es:CargarhoraespecialistaService,historiaclinica:HistoriaClinicaService) 
-  {
-    setTimeout(() => {
-      this.unseg = true;
-    }, 1000);
+  constructor(public auth:AuthService,private sv:RegistrarUsuariosService,private fb:FormBuilder,private es:CargarhoraespecialistaService,private historiaclinica:HistoriaClinicaService) 
+  { 
      this.sv.getAll().get().subscribe(e=>{e.forEach(ese=>{
         if(ese.data().email == this.auth.correologeado)
         {
@@ -180,6 +182,41 @@ export class PerfilComponent implements OnInit {
       this.sabado = !this.sabado;
       console.log(data);
     }   
+    
   }
+  hacerBusqueda()
+  {
+    let arrnueva = [];
+    let cantidadletras = this.b.length;
+    
+    var especialista = this.historiaclinicaa.filter((e:any)=>{
+
+      return e.peso == this.b || e.altura == this.b || e.presion == this.b || e.temepratura == this.b;
+
+      
+    })
+    if(especialista.length > 0 )
+    {
+      this.historiaclinicaa = especialista;
+    }
+  }
+  limpiar()
+  {
+    this.historiaclinicaa = [];
+    this.historiaclinica.getAll().get().subscribe(e=>{e.forEach(e=>{
+      this.historiaclinicaa.push(e.data());
+    })})
+  }
+  makePDF()
+  {
+    let pdf = new jsPDF('p','pt','a4');
+
+    pdf.html(this.el.nativeElement,{
+      callback:(pdf)=>{
+         pdf.save("Historia Clinica.pdf")
+      }
+    });
+  }
+  
 
 }
