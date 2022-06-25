@@ -145,7 +145,6 @@ export class TurnoadministradorComponent implements OnInit {
           {
             let historiaClinica = new Historiaclinica();
             historiaClinica.altura = result.value.altura;
-            historiaClinica.otros = result.value.otros;
             historiaClinica.peso = result.value.peso;
             historiaClinica.temepratura = result.value.temperatura;
             historiaClinica.presion = result.value.presion;

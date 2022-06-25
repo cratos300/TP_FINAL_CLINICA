@@ -35,6 +35,7 @@ export class AuthService {
       this.estalogeado = false;
       this.quienes = "Clínica Médica";
         this.router.navigate(['']);
+        
     }).catch(e=>{
       alert("No se pudo deslogear");
     })

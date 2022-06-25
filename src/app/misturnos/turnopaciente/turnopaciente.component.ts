@@ -15,6 +15,7 @@ export class TurnopacienteComponent implements OnInit {
   historiaclinicaa:any = [];
   b:any;
   list:any;
+  eestimado = "hola";
   resenia:boolean = false;
   reseniaActual:any;
 
@@ -146,7 +147,6 @@ export class TurnopacienteComponent implements OnInit {
           {
             let historiaClinica = new Historiaclinica();
             historiaClinica.altura = result.value.altura;
-            historiaClinica.otros = result.value.otros;
             historiaClinica.peso = result.value.peso;
             historiaClinica.temepratura = result.value.temperatura;
             historiaClinica.presion = result.value.presion;

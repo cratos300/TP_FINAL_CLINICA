@@ -51,6 +51,7 @@
                 <div class="d-flex justify-content-center align-items-center">
                   <div>
                     <div class="d-flex justify-content-center align-items-center">
+                      
                      <h2>Historia Clínica</h2>
                     </div>
                     <div class="d-flex justify-content-center align-items-center">
@@ -64,8 +65,13 @@
                       
                       </div>
                       <div id="content" #content>
+                        
+                        <div class="d-flex justify-content-between align-items-center ">
+                          <img class="im" src="../../../assets/imagennnn2.png" alt="">
+                          <span>{{auth.correologeado}}</span>
+                          <span>{{fecha}}</span>
+                        </div>
                   <table class="table text-center tt borde" *ngIf="historiaclinicaa != null">
-                
                   <thead>
                   <tr>
                     <th scope="col">Altura</th>
@@ -74,6 +80,9 @@
                     <th scope="col">Temperatura</th>
                     <th scope="col">Dia</th>
                     <th scope="col">Hora</th>
+                    <th scope="col">valor1</th>
+                    <th scope="col">valor2</th>
+                    <th scope="col">valor3</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -83,14 +92,22 @@
                       <td *ngIf="item.correopaciente == auth.correologeado">{{item.presion}} </td>
                       <td *ngIf="item.correopaciente == auth.correologeado">{{item.temepratura}} </td>
                       <td *ngIf="item.correopaciente == auth.correologeado">{{item.dia}} </td>
-                      <td *ngIf="item.correopaciente == auth.correologeado">{{item.hora}}:{{item.minutos}} </td>    
+                      <td *ngIf="item.correopaciente == auth.correologeado">{{item.hora}}:{{item.minutos}} </td>
+                      <td *ngIf="item.correopaciente == auth.correologeado">{{item.valor1}} </td>    
+                      <td *ngIf="item.correopaciente == auth.correologeado">{{item.valor2}} </td>
+                      <td *ngIf="item.correopaciente == auth.correologeado">{{item.valor3}} </td>
                   </tr>
                   </tbody>
                   </table>
+                
                 </div>
+                <button class="btn btn-primary" (click) = "makePDF()" >CREAR PDF</button>
                   </div>
               </div>
+            </div>
+    
               <div class="col-6" *ngIf="auth.especialista">
+        
                 <form class="row" >
                   <div class="col-6">
                     <p>Dias disponible:</p>
@@ -134,5 +151,5 @@
                   </button>
                 </form>
               </div>
-          <button (click) = "makePDF()" >CREAR PDF</button>
+        
 </div>

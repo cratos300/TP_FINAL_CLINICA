@@ -12,6 +12,8 @@ export class HabilitarcuentaComponent implements OnInit {
   constructor(private sv:RegistrarUsuariosService)
   {
     this.sv.getAll().valueChanges().subscribe(e=>{
+      console.log("aalerta");
+      
       this.list = []
       for(let i = 0; i<e.length;i++)
       {

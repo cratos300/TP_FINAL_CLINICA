@@ -17,9 +17,12 @@ export class TurnoespecialistaComponent implements OnInit {
   list:any;
   resenia:boolean = false;
   reseniaActual:any;
+  ditt:any = "hola";
 
   constructor(public auth:AuthService,private agregarestadoturno:AgregarestadoturnoService,private hsturnos:HorariosturnosService,private historiaclinica:HistoriaClinicaService) 
   {
+  
+    
     this.agregarestadoturno.getAll().valueChanges().subscribe(e=>{
       this.list = e;
       
@@ -124,7 +127,30 @@ export class TurnoespecialistaComponent implements OnInit {
             if (!altura || !peso || !temperatura || !presion) {
               Swal.showValidationMessage(`Cargue historia clinica! (Los parametros obligatorios)`)
             }
-  
+            // if(valor1 == undefined)
+            // {
+            //   valor1 = "";
+            // }
+            // if(valor2 == undefined)
+            // {
+            //   valor2 = ""
+            // }
+            // if(valor3 == undefined)
+            // {
+            //   valor3 = "";
+            // }
+            // if(clave1 == undefined)
+            // {
+            //   clave1 == "";
+            // }
+            // if(clave2 == undefined)
+            // {
+            //   clave2 == "";
+            // }
+            // if(clave3 == undefined)
+            // {
+            //   clave3 == "";
+            // }
             if(clave1 && valor1)
             {
               otros.push({clave:clave1, valor:valor1});
@@ -144,18 +170,41 @@ export class TurnoespecialistaComponent implements OnInit {
           
           if(result.isConfirmed)
           {
+            // if(result.value.otros.length>0)
+            // {
+            //   for(let i = 0; i<result.value.otros.length;i++)
+            //   {
+            //     result.value.otros[i]
+            //   }
+            // }
+            console.log(result.value.valor1);
+            
+            if(result.value.clave1 == undefined)
+            {
+              result.value.clave1 = "";
+            }
+            if(result.value.clave2 == undefined)
+            {
+              result.value.clave2 = "";
+            }
+            if(result.value.clave3 == undefined)
+            {
+              result.value.clave3 = "";
+            }
             let historiaClinica = new Historiaclinica();
             historiaClinica.altura = result.value.altura;
-            historiaClinica.otros = result.value.otros;
             historiaClinica.peso = result.value.peso;
             historiaClinica.temepratura = result.value.temperatura;
             historiaClinica.presion = result.value.presion;
             historiaClinica.dia = data.dia;
-            historiaClinica.hora = data.hora;
+            historiaClinica.hora = data.hora
             historiaClinica.minutos = data.minutos;
             historiaClinica.correoespecialista = data.correoEspecialista;
             historiaClinica.correopaciente = data.correoPaciente;
             historiaClinica.especialidad = data.especialidad;
+            historiaClinica.otros = result.value.otros;
+            console.log(historiaClinica.otros);
+            
             this.historiaclinica.create(historiaClinica).then((e:any)=>{
               alert("HISTORIA CLINICA CARGADA")
             })

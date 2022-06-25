@@ -10,5 +10,11 @@ export class Historiaclinica {
     dia:any
     hora:any;
     minutos:any;
+    clave1:any;
+    valor1:any;
+    clave2:any;
+    valor2:any;
+    clave3:any;
+    valor3:any;
     otros:any = [];
 }
