@@ -44,12 +44,20 @@ export class PerfilComponent implements OnInit {
         }
 
      })})
-     this.h.getAll().valueChanges().subscribe(e=>{
-      this.historiaclinicaa = e;
-     })
-   setTimeout(() => {
-    console.log(this.historiaclinicaa);
-   }, 500);
+  
+     if(this.auth.paciente)
+     {
+       let pec = this.h.getAll().valueChanges().subscribe(e=>{
+        this.historiaclinicaa = [];
+        for(let i = 0; i<e.length;i++)
+        {
+          if(e[i].correopaciente == auth.correologeado)
+          {
+            this.historiaclinicaa.push(e[i]);
+          }
+        }
+       })
+     }
     //  this.h.getAll().valueChanges().subscribe((e:any)=>{
       
     //   this.historiaclinicaa = e;

@@ -3,7 +3,6 @@ import { iif } from 'rxjs';
 import { Historiaclinica } from 'src/app/clases/historiaclinica';
 import { AgregarestadoturnoService } from 'src/app/services/agregarestadoturno.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { HistoriaClinicaService } from 'src/app/services/historia-clinica.service';
 import { HorariosturnosService } from 'src/app/services/horariosturnos.service';
 import Swal from 'sweetalert2';
 
