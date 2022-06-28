@@ -1,18 +1,13 @@
-#c
+.principal
 {
+    min-height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
-.tamanio
+.principall
 {
-    height: 600px;
-    width: 600px;
-}
-.d
-{
-    height: 100vh;
+  
     display: flex;
     justify-content: center;
     align-items: center;

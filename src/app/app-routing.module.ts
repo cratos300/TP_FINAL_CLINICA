@@ -18,7 +18,8 @@ const routes: Routes = [
   {path: 'habilitarCuenta', loadChildren: () => import('./habilitar-cuentas/habilitar-cuentas.module').then(m => m.HabilitarCuentasModule),canActivate:[GuardauthGuard] },
   {path: 'listarUsuarios', loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule),canActivate:[GuardauthGuard] },
   {path: 'misturnos', loadChildren: () => import('./misturnos/misturnos.module').then(m => m.MisturnosModule),canActivate:[GuardauthGuard] },
-
+  {path: 'pacientes', loadChildren: () => import('./pacientes/pacientes.module').then(m => m.PacientesModule),canActivate:[GuardauthGuard] },
+  {path: 'logs', loadChildren: () => import('./logs/logs.module').then(m => m.LogsModule),canActivate:[GuardauthGuard] },
 
 
 
