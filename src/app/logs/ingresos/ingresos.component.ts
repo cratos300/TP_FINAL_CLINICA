@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LogIngresosService } from 'src/app/services/log-ingresos.service';
 
 @Component({
   selector: 'app-ingresos',
@@ -6,8 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ingresos.component.css']
 })
 export class IngresosComponent implements OnInit {
-
-  constructor() { }
+  list:any = [];
+  constructor(private logs:LogIngresosService) 
+  {
+       logs.getAll().valueChanges().subscribe(e=>{
+        console.log(e);
+        
+        this.list = e;
+       })
+  }
 
   ngOnInit(): void {
   }

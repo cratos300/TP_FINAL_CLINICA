@@ -15,6 +15,7 @@ export class CantturnosespecialidadComponent implements OnInit {
   ctx:any;
   @ViewChild('content',{static:false}) el!:ElementRef;
   
+  list:any = [];
   especialistas:any = [];
   especialistacontador:any = [];
   listageneral:any = [];
@@ -42,45 +43,28 @@ export class CantturnosespecialidadComponent implements OnInit {
           }
           this.especialistacontador.push(contador);
        }
+       for(let i = 0; i<this.especialistas.length;i++)
+       {
+         let data = {'especialidad':this.especialistas[i],'cantidad':this.especialistacontador[i]}
+         this.list.push(data);
+       }
        console.log(this.especialistas);
        
        console.log(this.especialistacontador);
-       this.det();
-       
-       console.log(e.sort(this.comparar));
-       
-        
+
+       this.det();     
       })
       
      })
-  }
-  comparar(data1:any,data2:any)
-  {
- 
-    if(data1.dia > data2.dia )
-    {
-
-      return 1;
-    }
-    else if(data1.dia <data2.dia) 
-    {
-      return -1;
-    }
-    else
-    {
-      return 0;
-    }
   }
   ngOnInit(): void {
   }
   det()
 {
   this.ctx = document.getElementById('myChart');
-  this.ctx.width = "200"
-  this.ctx.height = "200"
-  this.ctx.backgroundColor = 'white'
-  this.ctx.fontColor = 'white'
-  this.ctx.borderColor = 'white'
+  this.ctx.width = "600"
+  this.ctx.height = "300"
+
 const myChart = new Chart(this.ctx, {
  type: 'pie',
  data: {

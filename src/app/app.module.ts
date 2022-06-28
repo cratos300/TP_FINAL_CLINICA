@@ -28,6 +28,7 @@ import { Ordenar2Pipe } from './pipes/ordenar2.pipe';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { Ordenar2Pipe } from './pipes/ordenar2.pipe';
      HomeComponent,
      CambiarColorDirective,
      Ordenar2Pipe,
+
 
   ],
   imports: [

@@ -8,6 +8,7 @@ import { CantturnosespecialidadComponent } from './cantturnosespecialidad/canttu
 import { CantturnosdiaComponent } from './cantturnosdia/cantturnosdia.component';
 import { TurnosolicitadolapsoComponent } from './turnosolicitadolapso/turnosolicitadolapso.component';
 import { TurnofinalizadolapsoComponent } from './turnofinalizadolapso/turnofinalizadolapso.component';
+import { OrdenarlogsPipe } from '../pipes/ordenarlogs.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TurnofinalizadolapsoComponent } from './turnofinalizadolapso/turnofinal
     CantturnosespecialidadComponent,
     CantturnosdiaComponent,
     TurnosolicitadolapsoComponent,
-    TurnofinalizadolapsoComponent
+    TurnofinalizadolapsoComponent,
+    OrdenarlogsPipe
   ],
   imports: [
     CommonModule,

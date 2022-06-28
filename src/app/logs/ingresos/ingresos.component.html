@@ -1,1 +1,18 @@
-<p>ingresos works!</p>
+<div class="d-flex justify-content-center align-items-center">
+<table class="table m">
+    <thead>
+      <tr>
+        <th scope="col">Usuario</th>
+        <th scope="col">Dia</th>
+        <th scope="col">Hora</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of list | ordenarlogs">
+      <tr>
+        <td> {{item.usuario}} </td>
+        <td> {{item.dia}} </td>
+        <td> {{item.hora}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

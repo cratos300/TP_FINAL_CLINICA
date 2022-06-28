@@ -8,6 +8,7 @@ import Chart from 'chart.js/auto';
   styleUrls: ['./cantturnosdia.component.css']
 })
 export class CantturnosdiaComponent implements OnInit {
+  list:any = [];
   fecha:any;
   ctx:any;
   turnospordiacontador:any = [];
@@ -39,6 +40,13 @@ export class CantturnosdiaComponent implements OnInit {
           this.turnospordiacontador.push(contador);
        }
 
+       for(let i = 0; i<this.filtrado.length;i++)
+       {
+         let data = {'dia':this.filtrado[i],'cantidad':this.turnospordiacontador[i]}
+         this.list.push(data);
+       }
+       console.log(this.list);
+       
        console.log(this.filtrado);
        console.log(this.turnospordiacontador);
        this.det();
@@ -55,8 +63,8 @@ export class CantturnosdiaComponent implements OnInit {
   det()
   {
     this.ctx = document.getElementById('m');
-  this.ctx.width = "300"
-  this.ctx.height = "200"
+  this.ctx.width = "600"
+  this.ctx.height = "300"
 const myChart = new Chart(this.ctx, {
  type: 'bar',
  data: {

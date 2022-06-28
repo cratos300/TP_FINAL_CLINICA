@@ -9,6 +9,7 @@ import { AprobarEspecialistasService } from 'src/app/services/aprobar-especialis
 import { RegistrarUsuariosService } from 'src/app/services/registrar-usuarios.service';
 import { Especialista } from 'src/app/clases/especialista';
 import { ToastrService } from 'ngx-toastr';
+import { LogIngresosService } from 'src/app/services/log-ingresos.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
   paciente1:Paciente;
   public formGroup!: FormGroup;
   sp:boolean = false;;
-  constructor(private auth:AuthService,private fb:FormBuilder,private router:Router,private spinner: NgxSpinnerService,private apEspecialista:AprobarEspecialistasService,private us:RegistrarUsuariosService,private ToastrSvc:ToastrService) 
+  constructor(private auth:AuthService,private fb:FormBuilder,private router:Router,private spinner: NgxSpinnerService,private apEspecialista:AprobarEspecialistasService,private us:RegistrarUsuariosService,private ToastrSvc:ToastrService, private ingresos:LogIngresosService) 
   {
     this.paciente1 = new Paciente();
     this.paciente1.nombre = "german"
@@ -136,10 +137,14 @@ export class LoginComponent implements OnInit {
       }
       else 
       {
-        this.auth.login(this.correo,this.contrasenia).then(e=>{
-
+        this.auth.login(this.correo,this.contrasenia).then((e:any)=>{
+              console.log(e);
+              
               this.sp = false;
-
+              let horaActual = new Date().toLocaleTimeString();
+              let diaActual = new Date().toLocaleDateString();
+              let objActual = {'usuario':this.correo,'dia':diaActual,'hora':horaActual};        
+               this.ingresos.create(objActual)
               this.router.navigateByUrl('/home');
 
 
