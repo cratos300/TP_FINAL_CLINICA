@@ -20,9 +20,11 @@ export class AltaAdministradorComponent implements OnInit {
   imagenes:any[] = [];
   encontrado:boolean = false;
   unadministrador:Administrador;
+  desactivar:boolean = false;;
   constructor(private fb:FormBuilder,private spinner: NgxSpinnerService,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService) 
   {
     this.unadministrador = new Administrador();
+     
    }
 
   ngOnInit(): void {
@@ -133,5 +135,19 @@ aceptar()
   {
     this.capcha = data;
   }
+  deshabilitado()
+  {
+    this.desactivar = !this.desactivar;
+    if(this.desactivar == true)
+    {
+      this.formGroup.get("capchaInput").setValue(this.capcha);   
+    }
+    else
+    {
+     setTimeout(() => {
+      this.formGroup.get("capchaInput").setValue('');   
+     }, 100);
 
+    }
+  }
 }
