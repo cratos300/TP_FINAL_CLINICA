@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 export class AltaAdministradorComponent implements OnInit {
   eventoGeneral:any;
   public formGroup!: FormGroup;
-  capcha:any = '543'
+  capcha:any;
   cap:any = '';
   imagenes:any[] = [];
   encontrado:boolean = false;
@@ -128,6 +128,10 @@ aceptar()
                    })
             })
   
+  }
+  accionn(data:any)
+  {
+    this.capcha = data;
   }
 
 }

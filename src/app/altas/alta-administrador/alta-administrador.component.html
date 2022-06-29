@@ -98,7 +98,7 @@
           </div>
           <div class="row">
           <div class="col-6">
-            <input class="form-control mt-3" id="display" value={{capcha}} disabled>
+            <input (appCaptcha) = "accionn($event)" class="form-control mt-3" id="display" value={{capcha}} disabled>
           </div>
     
           <div class="col-6">

@@ -30,6 +30,7 @@ import { LargoMaximoDirective } from './directivas/largo-maximo.directive';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,6 @@ import { LargoMaximoDirective } from './directivas/largo-maximo.directive';
      HomeComponent,
      CambiarColorDirective,
      Ordenar2Pipe,
-
 
   ],
   imports: [

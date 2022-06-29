@@ -13,6 +13,9 @@ import { NegritaDirective } from '../directivas/negrita.directive';
 
 
 
+
+
+
 @NgModule({
   declarations: [
     RegistrarComponent,
@@ -21,6 +24,7 @@ import { NegritaDirective } from '../directivas/negrita.directive';
     AltaEspecialistaComponent,
     CambiartamanioDirective,
     NegritaDirective,
+
   ],
   imports: [
     CommonModule,

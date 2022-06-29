@@ -38,6 +38,7 @@ export class TurnosolicitadolapsoComponent implements OnInit {
   filtrar()
   {
 
+    this.listafinal = [];
     this.correos = [];
     this.correoscontador = [];
     this.list = [];

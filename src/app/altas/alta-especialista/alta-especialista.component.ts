@@ -33,6 +33,7 @@ export class AltaEspecialistaComponent implements OnInit {
   @Output() volver: EventEmitter<any>= new EventEmitter<any>();
   constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private se:SelecespecialistaService,private spinner: NgxSpinnerService) 
   {
+    this.capcha = Math.floor((Math.random()* (500-100+1))+100);
     this.aprobar = new ConfirmarEspecialista();
     this.list = ['Odontologo','Traumatologo','Neurologo']
     // this.se.getAll().valueChanges().subscribe(e=>{

@@ -25,10 +25,9 @@ export class AltaPacienteComponent implements OnInit {
   @Output() volver: EventEmitter<any>= new EventEmitter<any>();
   
   constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private spinner: NgxSpinnerService) 
-  {
-    console.log(this.cap);
-    
+  {  
     this.unpaciente = new Paciente();
+     this.capcha = Math.floor((Math.random()* (500-100+1))+100);
   }
 
   ngOnInit(): void { 
@@ -156,5 +155,9 @@ cargarImagen(event:any)
 
   }
 }
+esto(data:any)
+  {
+    alert("sisilego")
+  }
 
 }
