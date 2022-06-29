@@ -142,7 +142,7 @@ export class LoginComponent implements OnInit {
               
               this.sp = false;
               let horaActual = new Date().toLocaleTimeString();
-              let diaActual = new Date().toLocaleDateString();
+              let diaActual = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) 
               let objActual = {'usuario':this.correo,'dia':diaActual,'hora':horaActual};        
                this.ingresos.create(objActual)
               this.router.navigateByUrl('/home');

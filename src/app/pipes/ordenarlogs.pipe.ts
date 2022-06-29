@@ -21,11 +21,11 @@ export class OrdenarlogsPipe implements PipeTransform {
     }
     else
     {
-      if(data1.hora > data2.hora)
+      if(data1.hora < data2.hora)
       {
         return 1;
       }
-      else if(data1.hora < data2.hora)
+      else if(data1.hora > data2.hora)
       {
         return -1
       }

@@ -21,7 +21,8 @@ import { GuardauthGuard } from './guards/guardauth.guard';
 import { CambiarColorDirective } from './directivas/cambiar-color.directive';
 import { connectFirestoreEmulator, getFirestore, provideFirestore } from "@angular/fire/firestore";
 import { Ordenar2Pipe } from './pipes/ordenar2.pipe';
-
+import { FechaDirectivaDirectiveDirective } from './directivas/fecha-directiva-directive.directive';
+import { LargoMaximoDirective } from './directivas/largo-maximo.directive';
 
 
 

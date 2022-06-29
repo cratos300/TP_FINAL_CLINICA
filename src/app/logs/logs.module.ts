@@ -9,6 +9,10 @@ import { CantturnosdiaComponent } from './cantturnosdia/cantturnosdia.component'
 import { TurnosolicitadolapsoComponent } from './turnosolicitadolapso/turnosolicitadolapso.component';
 import { TurnofinalizadolapsoComponent } from './turnofinalizadolapso/turnofinalizadolapso.component';
 import { OrdenarlogsPipe } from '../pipes/ordenarlogs.pipe';
+import { FormsModule } from '@angular/forms';
+import { FechaDirectivaDirectiveDirective } from '../directivas/fecha-directiva-directive.directive';
+import { LargoMaximoDirective } from '../directivas/largo-maximo.directive';
+import { SoloNumerosDirective } from '../directivas/solo-numeros.directive';
 
 
 @NgModule({
@@ -19,9 +23,13 @@ import { OrdenarlogsPipe } from '../pipes/ordenarlogs.pipe';
     CantturnosdiaComponent,
     TurnosolicitadolapsoComponent,
     TurnofinalizadolapsoComponent,
-    OrdenarlogsPipe
+    OrdenarlogsPipe,
+    FechaDirectivaDirectiveDirective,
+    LargoMaximoDirective,
+    SoloNumerosDirective
   ],
   imports: [
+    FormsModule,
     CommonModule,
     LogsRoutingModule
   ]

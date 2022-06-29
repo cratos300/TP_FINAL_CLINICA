@@ -123,7 +123,7 @@ export class ElegirHorariosComponent implements OnInit {
     
           this.ahora.setMinutes(this.ahora.getMinutes()+30);
         }
-        ti.dia = data.toLocaleDateString()
+        ti.dia = data.toLocaleDateString('en-GB')
         ti.horario = this.arrayHorarios;
         this.arraytercero.push(ti);
         }

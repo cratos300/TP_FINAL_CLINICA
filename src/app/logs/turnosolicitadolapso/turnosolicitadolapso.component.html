@@ -1,1 +1,4 @@
 <p>turnosolicitadolapso works!</p>
+<input type="text" appFechaDirectivaDirective appSoloNumeros appLargoMaximo [(ngModel)]="fechaDesde" placeholder="Fecha Desde (dd/mm/aaaa)">
+<input type="text" appFechaDirectivaDirective appSoloNumeros appLargoMaximo [(ngModel)]="fechaHasta" placeholder="Fecha Hasta (dd/mm/aaaa)">
+<button class="btn btn-primary" (click) = "filtrar()">FILTRAR</button>
