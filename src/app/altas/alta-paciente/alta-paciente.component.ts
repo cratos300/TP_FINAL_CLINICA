@@ -20,10 +20,14 @@ export class AltaPacienteComponent implements OnInit {
   imagenes:any[] = [];
   public formGroup!: FormGroup;
   encontrado:boolean = false;
+  capcha:any = '543'
+  cap:any = ''
   @Output() volver: EventEmitter<any>= new EventEmitter<any>();
   
   constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private spinner: NgxSpinnerService) 
   {
+    console.log(this.cap);
+    
     this.unpaciente = new Paciente();
   }
 
@@ -38,6 +42,7 @@ export class AltaPacienteComponent implements OnInit {
       'password': ['',[Validators.required]],
       'inputFile': ['',[Validators.required]],
       'inputFile2': ['',[Validators.required]],
+      'capchaInput' : ['', Validators.required],
 
     });
   }
