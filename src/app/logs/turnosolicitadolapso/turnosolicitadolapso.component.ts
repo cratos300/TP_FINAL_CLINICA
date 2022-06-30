@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild,ElementRef, } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef} from '@angular/core';
 import { AgregarestadoturnoService } from 'src/app/services/agregarestadoturno.service';
 import jsPDF from 'jspdf';
 import Chart from 'chart.js/auto';

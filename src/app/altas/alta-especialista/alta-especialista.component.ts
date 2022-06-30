@@ -31,6 +31,7 @@ export class AltaEspecialistaComponent implements OnInit {
   public formGroup!: FormGroup;
   encontrado:boolean = false;
   @Output() volver: EventEmitter<any>= new EventEmitter<any>();
+  desactivar:boolean = false;
   constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private se:SelecespecialistaService,private spinner: NgxSpinnerService) 
   {
     this.capcha = Math.floor((Math.random()* (500-100+1))+100);
@@ -209,6 +210,25 @@ borrar2(data:any)
     {
       this.listoriginal.splice(i,i);
     }
+  }
+}
+deshabilitado()
+{
+  this.desactivar = !this.desactivar;
+  if(this.desactivar == true)
+  {
+    console.log("sisi entro");
+    
+    this.formGroup.get("capchaInput").setValue(this.capcha);   
+  }
+  else
+  {
+   setTimeout(() => {
+    this.formGroup.get("capchaInput").setValue('');   
+    console.log( this.formGroup.get("capchaInput").value);
+    
+    
+   }, 100);
   }
 }
 

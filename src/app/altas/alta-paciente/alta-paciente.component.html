@@ -82,7 +82,7 @@
                 </div>
             </div>
             </div>
-            <div class="row">
+            <div class="row" *ngIf="desactivar == false">
                 <div class="col-6">
                   <input class="form-control mt-3" id="display" value={{capcha}} disabled>
                 </div>
@@ -99,6 +99,7 @@
               </div>
                 <div class="clearfix"></div>
                 <button type="submit" class="btn btn-info btn-lg btn-responsive botonPrincipal" [disabled] = "formGroup.invalid || (capcha != cap)" id="search">REGISTRAR</button>
+                <button type="button" (click) = "deshabilitado()">CANCELAR_CAPTCHA</button>
             </form>
         </div>
     </body>

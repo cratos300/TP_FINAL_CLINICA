@@ -23,7 +23,7 @@ export class AltaPacienteComponent implements OnInit {
   capcha:any = '543'
   cap:any = ''
   @Output() volver: EventEmitter<any>= new EventEmitter<any>();
-  
+  desactivar:boolean = false;
   constructor(private fb:FormBuilder,private us:RegistrarUsuariosService,private auth:AuthService,private storageService:SubirimagenService,private spinner: NgxSpinnerService) 
   {  
     this.unpaciente = new Paciente();
@@ -159,5 +159,25 @@ esto(data:any)
   {
     alert("sisilego")
   }
+  deshabilitado()
+{
+  this.desactivar = !this.desactivar;
+  if(this.desactivar == true)
+  {
+    console.log("sisi entro");
+    
+    this.formGroup.get("capchaInput").setValue(this.capcha);   
+  }
+  else
+  {
+   setTimeout(() => {
+    this.formGroup.get("capchaInput").setValue('');   
+    console.log( this.formGroup.get("capchaInput").value);
+    
+    
+   }, 100);
+  }
+}
+
 
 }
