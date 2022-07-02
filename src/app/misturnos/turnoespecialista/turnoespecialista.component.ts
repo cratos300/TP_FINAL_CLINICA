@@ -70,7 +70,8 @@ export class TurnoespecialistaComponent implements OnInit {
           html: `<input type="text" id="altura" class="swal2-input" placeholder="Altura (En metros)">
           <input type="text" id="peso" class="swal2-input" placeholder="Peso (En kilos)">,
           <input type="text" id="temperatura" class="swal2-input" placeholder="Temperatura (En ~Grado Celcius)">
-          <input type="text" id="presion" class="swal2-input" placeholder="Presión"><br>
+          <input type="text" id="presion" class="swal2-input" placeholder="Presión">
+          <input type="number" id="numero" class="swal2-input" placeholder="Tato tipo Number"><br>
           <span>Otros<span>
           <div class="row">
           <div class="col-6">
@@ -109,7 +110,7 @@ export class TurnoespecialistaComponent implements OnInit {
             let valor2!:any;
             let clave3!:any;
             let valor3!:any;
-  
+            let numero!:any;
             let otros:any = [];
   
             altura = (<HTMLInputElement>Swal.getPopup()!.querySelector('#altura')).value;
@@ -123,9 +124,15 @@ export class TurnoespecialistaComponent implements OnInit {
             valor2 = (<HTMLInputElement>Swal.getPopup()!.querySelector('#valor2')).value;
             clave3 = (<HTMLInputElement>Swal.getPopup()!.querySelector('#clave3')).value;
             valor3 = (<HTMLInputElement>Swal.getPopup()!.querySelector('#valor3')).value;
-  
+            numero = (<HTMLInputElement>Swal.getPopup()!.querySelector('#numero')).value;
             if (!altura || !peso || !temperatura || !presion) {
               Swal.showValidationMessage(`Cargue historia clinica! (Los parametros obligatorios)`)
+            }
+            console.log(numero);
+            
+            if(numero <0 || numero >100)
+            {
+              Swal.showValidationMessage(`Datos incorrectos! (El parametro numerico es de 0-100)`)
             }
             // if(valor1 == undefined)
             // {
